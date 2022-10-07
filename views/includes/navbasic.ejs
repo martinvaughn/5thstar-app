@@ -1,0 +1,19 @@
+<div class="navbar navbar-default navbar-fixed-top">
+    <ul class="nav navbar-nav navbar-left">
+        <a href="/"><img class="main-log" src="images/homepage/mainlogo.png" alt="Home Office Post main logo"></a>
+    </ul>
+
+
+    <ul class="nav navbar-nav navbar-right">
+        <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+        <li><a class="sing-incons" href="/"><span class="glyphicon glyphicon-home"></span></a></li>
+        <% if (isAuthenticated) { %>
+            <li><a class="sing-incons" href="/jobboard"><span class="glyphicon glyphicon-briefcase"></span> Job Board</a></li>
+            <li><a class="sing-incons" href="/logout"><span class="glyphicon glyphicon-log-out"></span> Log Out</a></li>
+            <% } %>
+                <% if (!isAuthenticated) { %>
+                    <li id="<%= login ? 'loginIcon' : ''%>"><a class="sing-incons" href="/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                    <li id="<%= singUp ? 'signInIcon' : ''%>"><a class="sing-incons" href="/signup"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+                    <% } %>
+    </ul>
+</div>

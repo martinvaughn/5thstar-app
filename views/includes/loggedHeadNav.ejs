@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="images/includesImg/56877300-d659-48b9-80e9-790a190cfe11_200x200.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="stylesheets/footercss.css">
+    <link rel="stylesheet" href="stylesheets/navlogged.css">
+    <link rel="stylesheet" href="stylesheets/jobboard.css">
+    <title>
+        <%= title %>
+    </title>
+</head>
+
+<body>
+
+    <nav id="logged-in-nav" class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>                        
+            </button>
+                <a class="navbar-brand" href="/"><img class="main-log" src="images/homepage/mainlogo.png" alt="Home Office Post main logo"></a>
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbar">
+                <ul class="nav navbar-nav">
+                    <li><a class="nav-a" href="/"><span class="glyphicon glyphicon-home"></span></a></li>
+                    <li><a class="nav-a" href="/jobboard"><span class= <%= board  ? "pageMarked" : "" %>>Job Board</span></a></li>
+                    <input type="hidden" id="jobSavedNumberJS" value="<%= jobSavedNumber %>">
+                    <li><a class="nav-a" href="/saved"><span class= <%= !board  ? "pageMarked" : "" %>>Saved</span><span id="savedNumber">&nbsp +<%= jobSavedNumber %> &nbsp</span></a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a class="nav-a" href="/logout">
+                            <span class="glyphicon glyphicon-log-out"></span> Log Out
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>

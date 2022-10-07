@@ -1,0 +1,35 @@
+{
+    "name": "thanks-backend",
+    "version": "1.0.0",
+    "description": "This application is for thanks",
+    "main": "app.js",
+    "dependencies": {
+        "bcryptjs": "^2.4.3",
+        "body-parser": "^1.19.0",
+        "connect-flash": "^0.1.1",
+        "connect-mongodb-session": "^2.3.3",
+        "cors": "^2.8.5",
+        "crypto": "^1.0.1",
+        "csurf": "^1.11.0",
+        "ejs": "^3.1.3",
+        "express": "^4.17.1",
+        "express-session": "^1.17.1",
+        "express-validator": "^6.5.0",
+        "mongodb": "^3.5.8",
+        "mongoose": "^5.9.18",
+        "nodemailer": "^6.4.16",
+        "nodemon": "^2.0.4",
+        "path": "^0.12.7"
+    },
+    "devDependencies": {},
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "start": "nodemon app.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": ""
+    },
+    "author": "Martin Vaughn",
+    "license": "ISC"
+}

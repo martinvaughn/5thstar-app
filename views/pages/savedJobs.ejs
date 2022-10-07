@@ -1,0 +1,127 @@
+<%- include('../includes/loggedHeadNav.ejs') %>
+    <main style="height: 100%">
+        <% if (data.length > 0) {%>
+            <div id="board-container">
+                <!--SIDE BAR-->
+                <div class="job-display-side-bar">
+                    <span id="job-top"></span>
+                    <div class="job-sub-nav">
+                        <a class="nav-icon-job" href="#job-bottom"><span class="glyphicon glyphicon-triangle-bottom"></span>BOTTOM</a>
+                    </div>
+                    <% data.forEach(element => { %>
+                        <!--VALUES THAT NEEDS TO PASSED HIDDEN TO BE USED LATER FOR THE URL AND JOB ID-->
+                        <div class="job-basic-info">
+                            <span id="id" hidden>  <%= element.id %></span>
+                            <span id="url" hidden> <%= element.url %></span>
+                            <div class="in-job-basic-info">
+                                <h3 class="title">
+                                    <%= element.title %>
+                                </h3>
+                                <h3 class="company_name">
+                                    <%= element.company_name %>
+                                </h3>
+                                <h4 class="candidate_required_location">
+                                    <span class="glyphicon glyphicon-map-marker" class="job-icon"></span>
+                                    <span class="candidate_required_location">
+                            <% if(element.candidate_required_location.length < 2) {%>
+                                Not Specified
+                                <%} else { %>
+                                    <%= element.candidate_required_location %>
+                                        <% }  %> </span> &nbsp &nbsp<span class="glyphicon glyphicon-briefcase" class="job-icon"></span>
+                                    <span class="job_type">
+                                            <% if (element.job_type == "full_time") {%>
+                                                Full Time
+                                                    <%} else if (element.job_type == "contract"){ %>
+                                                        Contract
+                                                        <% } else if (element.job_type == "other") {%>
+                                                            Other
+                                                        <% } else { %>
+                                                            Not Specified
+                                                            <% } %></span>
+                                </h4>
+                                <h4 class="publication_date">
+                                    <span class="glyphicon glyphicon-time" class="job-icon"></span>
+                                    <%= element.publication_date.replace("T", " ") %>
+                                </h4>
+                                <div class="description" hidden>
+                                    <%= element.description %>
+                                </div>
+                            </div>
+                        </div>
+
+                        <% }); %>
+                            <span id="job-bottom"></span>
+                            <div class="job-sub-nav-down">
+                                <a class="nav-icon-job" href="#job-top"><span class="glyphicon glyphicon-triangle-top"></span>TOP</a>
+                            </div>
+                </div>
+                <!--DESCRIPTION VIEW-->
+                <div class="job-display-description">
+                    <div class="jod-decription-cleanArea">
+                        <div class="job-top-display">
+                            <h2 id="jobTitle">
+                                <%= data[0].title %>
+                            </h2>
+                            <span>
+                            <div class="save-apply-buttons">
+                                <form method="POST" action="/removejob" >
+                                    <input id="jobID" type="text" name="removeJobID" value="<%= data[0].id%>" hidden>
+                                    <input id= "token" type="hidden" name="_csrf" value="<%= csrfToken %>">
+                                    <button type="submit" class="btn btn-danger" >Remove</button>
+                                </form>
+                                <a id="JobURL" href="<%= data[0].url %>" target="_blank"><button class="btn btn-success">Apply</button></a>
+                            </div>
+                        </span>
+                        </div>
+                        <hr>
+                        <div class="company-details">
+
+                            <h3 id="jobCompany">
+                                <%= data[0].company_name %>
+                            </h3>
+
+                            <h3 class="icon-info">
+                                <span class="glyphicon glyphicon-map-marker" class="job-icon"></span>
+                                <span id="jobLocation">
+                            <% if(data[0].candidate_required_location.length < 2) {%>
+                                Not Specified
+                                <%} else { %>
+                                    <%= data[0].candidate_required_location %>
+                                        <% }  %></span> &nbsp &nbsp<span class="glyphicon glyphicon-briefcase" class="job-icon"></span>
+                                <span id="JobType">
+                                <% if (data[0].job_type == "full_time") {%>
+                                    Full Time
+                                        <%} else if (data[0].job_type == "contract"){ %>
+                                            Contract
+                                            <% } else if (data[0].job_type == "other") {%>
+                                                Other
+                                            <% } else { %>
+                                                Not Specified
+                                                <% } %></span>
+                                </span>
+                            </h3>
+                        </div>
+                        <hr>
+                        <div id="jobDescription">
+                            <%- data[0].description %>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <% } else { %>
+                <div id="noJobsSavedMesg">
+                    <div class="page-wrap d-flex flex-row align-items-center" style="margin-top: 150px;">
+                        <div class="row justify-content-center">
+                            <div class="col-md-12 text-center">
+                                <img class="main-log" src="images/homepage/mainlogo.png" alt="Home Office Post main logo" style="height: 45px;">
+                                <div class="mb-4 lead">
+                                    <h1>No saved jobs!</h1>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <% } %>
+    </main>
+
+    <%- include('../includes/foot.ejs') %>

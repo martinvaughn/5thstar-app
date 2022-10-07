@@ -1,0 +1,49 @@
+#logged-in-nav {
+    background-color: #ffffff;
+    border-color: #ffffff;
+}
+
+#logged-in-nav .navbar-toggle {
+    background-color: black;
+}
+
+.navbar-toggle .icon-bar {
+    background-color: #ffffff;
+}
+
+#logged-in-nav a {
+    font-size: 16px;
+    font-weight: bold;
+    color: #000000;
+}
+
+.navbar-nav li:hover {
+    color: none;
+}
+
+#logged-in-nav .nav-a:hover {
+    color: #AA2626;
+    margin-top: -2px;
+}
+
+.main-log {
+    margin-top: -4px;
+}
+
+.glyphicon {
+    color: #AA2626;
+}
+
+.navbar-left {
+    margin-top: 9.5px;
+}
+
+#savedNumber {
+    background-color: #E3E3E5;
+    margin-left: 3px;
+    height: 5px;
+    width: 5px;
+    border-radius: 50%;
+    padding: 0.2em;
+    color: #AA2626;
+}

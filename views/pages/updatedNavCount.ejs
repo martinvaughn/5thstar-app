@@ -1,0 +1,25 @@
+<div class="container-fluid">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>                        
+        </button>
+        <a class="navbar-brand" href="/"><img class="main-log" src="images/homepage/mainlogo.png" alt="Home Office Post main logo"></a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+        <ul class="nav navbar-nav">
+            <li><a class="nav-a" href="/"><span class="glyphicon glyphicon-home"></span></a></li>
+            <li><a class="nav-a" href="/jobboard"><span class= <%= board  ? "pageMarked" : "" %>>Job Board</span></a></li>
+            <input type="hidden" id="jobSavedNumberJS" value="<%= jobSavedNumber %>">
+            <li><a class="nav-a" href="/saved"><span class= <%= !board  ? "pageMarked" : "" %>>Saved</span><span id="savedNumber">&nbsp +<%= jobSavedNumber %> &nbsp</span></a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <li>
+                <a class="nav-a" href="/logout">
+                    <span class="glyphicon glyphicon-log-out"></span> Log Out
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>

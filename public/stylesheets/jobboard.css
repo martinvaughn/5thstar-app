@@ -1,0 +1,160 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300&family=Roboto:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@700&display=swap');
+main {
+    margin-top: -20px;
+}
+
+#board-container {
+    display: grid;
+    margin-bottom: 16px;
+    grid-template-columns: 400px 1fr;
+}
+
+.job-display-side-bar {
+    overflow: auto;
+    background-color: #F6F6F8;
+    padding-left: 12px;
+    padding-right: 8px;
+    height: 600px;
+}
+
+.nav-icon-job {
+    font-weight: bold;
+    font-size: 11px;
+    color: black;
+    font-family: 'Roboto', sans-serif;
+}
+
+.nav-icon-job:hover {
+    color: #AA2626;
+    text-decoration: none;
+}
+
+
+/*Check if the page is marked*/
+
+.pageMarked {
+    border-bottom: solid;
+    border-bottom-color: #AA2626;
+    border-bottom-width: 3px;
+    color: #AA2626;
+}
+
+.job-basic-info h4,
+.job-basic-info h3 {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 15px;
+}
+
+.job-basic-info,
+.job-sub-nav {
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    border-bottom-color: #777770;
+}
+
+.job-sub-nav,
+.job-sub-nav-down {
+    padding: 0.6em;
+}
+
+.job-basic-info:hover {
+    cursor: pointer;
+    border-radius: 6px;
+}
+
+.in-job-basic-info {
+    padding: 1em;
+}
+
+.in-job-basic-info:hover {
+    background-color: #ffffff;
+    border-radius: 6px;
+}
+
+
+/*DESCRIPTION*/
+
+.job-display-description {
+    overflow: auto;
+    padding: 2em;
+    height: 600px;
+    background-color: #F6F6F8;
+}
+
+.jod-decription-cleanArea {
+    background-color: #ffffff;
+    padding: 1.6em;
+    border-radius: 6px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+#jobTitle {
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
+    font-size: 30px;
+}
+
+.company-details {
+    font-size: 20px;
+    font-family: 'Nunito', sans-serif;
+}
+
+.company-details .icon-info {
+    font-size: 15px;
+}
+
+hr {
+    height: 0.8px;
+    background: #F6F6F8;
+}
+
+.job-top-display {
+    display: flex;
+    justify-content: space-between;
+}
+
+.save-apply-buttons {
+    display: flex;
+}
+
+.btn-success {
+    margin-left: 5px;
+}
+
+#noJobsSavedMesg {
+    padding-top: 20px;
+    padding-bottom: 200px;
+    color: #757575;
+    font-family: 'Roboto Condensed', sans-serif;
+}
+
+
+/*RESPONSIVENESS*/
+
+@media screen and (max-width: 850px) {
+    #board-container {
+        display: block;
+    }
+    .job-display-side-bar {
+        display: flex;
+        height: 165px;
+        overflow: scroll;
+    }
+    .job-basic-info {
+        border-right-style: solid;
+        border-right-width: 1px;
+        border-right-color: #777770;
+        min-width: 400px;
+        border-bottom: none;
+    }
+    .job-sub-nav,
+    .job-sub-nav-down {
+        display: none;
+    }
+    .job-basic-info h4,
+    .job-basic-info h3 {
+        padding-left: 1em;
+    }
+}
