@@ -1,0 +1,70 @@
+<%- include('../includes/loggedHeadNav.ejs') %>
+<div class="dashboard">
+    <div class="upload-customers-container">
+        <button><h1>Upload Customers</h1></button>
+    </div>
+    <div class="analytics-container">
+        <div class="sent box">
+            <div class="text">
+                <h1>Sent</h1>
+            </div>
+            <div class="score">
+                <h2><%= analytics.sent %></h2>
+            </div>
+        </div>
+        <div class="opened box">
+            <div class="text">
+                <h1>Opened</h1>
+            </div>
+            <div class="score">
+                <h2><%= analytics.opened %></h2>
+            </div>
+        </div>
+        <div class="clicked box">
+            <div class="text">
+                <h1>Clicked</h1>
+            </div>
+            <div class="score">
+                <h2><%= analytics.clicked %></h2>
+            </div>
+        </div>
+    </div>
+    <div class="scores-container">
+        <div class="detractors box">
+            <div class="text">
+                <h1>Detractors</h1>
+                <span>Ratings 1-6</span>
+            </div>
+            <div class="score">
+                <h2><%= scores.detractors %></h2>
+            </div>
+        </div>
+        <div class="passives box">
+            <div class="text">
+                <h1>Passives</h1>
+                <span>Ratings 7-8</span>
+            </div>
+            <div class="score">
+                <h2><%= scores.passives %></h2>
+            </div>
+        </div>
+        <div class="promoters box">
+            <div class="text">
+                <h1>Promoters</h1>
+                <span>Ratings 9-10</span>
+            </div>
+            <div class="score">
+                <h2><%= scores.promoters %></h2>
+            </div>
+        </div>
+        <div class="total-ratings box">
+            <div class="text">
+                <h1>Total Ratings</h1>
+            </div>
+            <div class="score">
+                <h2><%= scores.totalRatings %></h2>
+            </div>
+        </div>
+    </div>
+</div>
+<%- include('../includes/foot.ejs') %>

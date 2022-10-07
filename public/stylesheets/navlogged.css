@@ -47,3 +47,22 @@
     padding: 0.2em;
     color: #AA2626;
 }
+
+/* COLE'S STYLING */
+
+.container-fluid {
+    border-bottom: 2px solid #dedede;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.navbar-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.app-name {
+    margin-right: 3rem;
+}
