@@ -1,4 +1,4 @@
-//Import the necessary packages
+require('dotenv').config();
 const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
@@ -12,19 +12,19 @@ const flash = require('connect-flash');
 const User = require("./models/user");
 
 //import config
-const Config = require("./configPrivatInfo")
+// const Config = require("./configPrivatInfo")
 
 // Connecct to Heroku || localhost:5000 || data base
 const PORT = process.env.PORT || 3000
-const MONGODB_URL = process.env.MONGODB_URL || Config.db;
+const MONGODB_URL = process.env.MONGODB_URL;
 
 //Initiliaze the express object to manager some of the functionality
 const app = express();
 
 //Initialize the MongoDBStore for session user
-const homeofficeSession = new MongoDBStore({
+const reviewsSession = new MongoDBStore({
     uri: MONGODB_URL,
-    collection: 'sessions'
+    collection: 'sessions' // or thanksdb
 });
 
 //Initialize csrf
@@ -32,7 +32,7 @@ const csrfProtection = csrf()
 
 //Setting up for deployin on Heroku
 const corsOptions = {
-    origin: Config.myUrl,
+    origin: process.env.MYURL,
     optionsSuccessStatus: 200
 };
 app.use(cors(corsOptions));
@@ -60,10 +60,10 @@ app.use(express.static(path.join(__dirname, 'public')))
 app.use(bodyParser({ extended: false }));
 app.use(
     session({
-        secret: Config.mySecret,
+        secret: process.env.MONGODB_SECRET,
         resave: false,
         saveUninitialized: false,
-        store: homeofficeSession
+        store: reviewsSession
     }));
 
 
@@ -82,17 +82,17 @@ app.use(csrfProtection)
             .catch(err => console.log(err));
     })
 
-/**************************
- * Note You might need to revise the status for
- * having the user loggin in a session already
- */
+    /**************************
+     * Note You might need to revise the status for
+     * having the user loggin in a session already
+     */
 
-//CSRF Middleware
-.use((req, res, next) => {
-    res.locals.isAuthenticated = req.session.isLoggedIn;
-    res.locals.csrfToken = req.csrfToken();
-    next();
-});
+    //CSRF Middleware
+    .use((req, res, next) => {
+        res.locals.isAuthenticated = req.session.isLoggedIn;
+        res.locals.csrfToken = req.csrfToken();
+        next();
+    });
 
 //Main Middleware
 app.use(authRoutes)

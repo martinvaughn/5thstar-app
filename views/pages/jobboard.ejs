@@ -5,13 +5,18 @@
             <div class="job-display-side-bar">
                 <span id="job-top"></span>
                 <div class="job-sub-nav">
-                    <a class="nav-icon-job" href="#job-bottom"><span class="glyphicon glyphicon-triangle-bottom"></span>BOTTOM</a>
+                    <a class="nav-icon-job" href="#job-bottom"><span
+                            class="glyphicon glyphicon-triangle-bottom"></span>BOTTOM</a>
                 </div>
-                <% data.jobs.forEach(element => { %>
+                <% data.jobs.forEach(element=> { %>
                     <!--VALUES THAT NEEDS TO PASSED HIDDEN TO BE USED LATER FOR THE URL AND JOB ID-->
                     <div class="job-basic-info">
-                        <span id="id" hidden>  <%= element.id %></span>
-                        <span id="url" hidden> <%= element.url %></span>
+                        <span id="id" hidden>
+                            <%= element.id %>
+                        </span>
+                        <span id="url" hidden>
+                            <%= element.url %>
+                        </span>
                         <div class="in-job-basic-info">
                             <h3 class="title">
                                 <%= element.title %>
@@ -22,25 +27,27 @@
                             <h4 class="candidate_required_location">
                                 <span class="glyphicon glyphicon-map-marker" class="job-icon"></span>
                                 <span class="candidate_required_location">
-                            <% if(element.candidate_required_location.length < 2) {%>
-                                Not Specified
-                                <%} else { %>
-                                    <%= element.candidate_required_location %>
-                                        <% }  %> </span> &nbsp &nbsp<span class="glyphicon glyphicon-briefcase" class="job-icon"></span>
+                                    <% if(element.candidate_required_location.length < 2) {%>
+                                        Not Specified
+                                        <%} else { %>
+                                            <%= element.candidate_required_location %>
+                                                <% } %>
+                                </span> &nbsp &nbsp<span class="glyphicon glyphicon-briefcase" class="job-icon"></span>
                                 <span class="job_type">
-                                            <% if (element.job_type == "full_time") {%>
-                                                Full Time
-                                                    <%} else if (element.job_type == "contract"){ %>
-                                                        Contract
-                                                        <% } else if (element.job_type == "other") {%>
-                                                            Other
-                                                        <% } else { %>
-                                                            Not Specified
-                                                            <% } %></span>
+                                    <% if (element.job_type=="full_time" ) {%>
+                                        Full Time
+                                        <%} else if (element.job_type=="contract" ){ %>
+                                            Contract
+                                            <% } else if (element.job_type=="other" ) {%>
+                                                Other
+                                                <% } else { %>
+                                                    Not Specified
+                                                    <% } %>
+                                </span>
                             </h4>
                             <h4 class="publication_date">
                                 <span class="glyphicon glyphicon-time" class="job-icon"></span>
-                                <%= element.publication_date.replace("T", " ") %>
+                                <%= element.publication_date.replace("T", " " ) %>
                             </h4>
                             <div class="description" hidden>
                                 <%= element.description %>
@@ -51,7 +58,8 @@
                     <% }); %>
                         <span id="job-bottom"></span>
                         <div class="job-sub-nav-down">
-                            <a class="nav-icon-job" href="#job-top"><span class="glyphicon glyphicon-triangle-top"></span>TOP</a>
+                            <a class="nav-icon-job" href="#job-top"><span
+                                    class="glyphicon glyphicon-triangle-top"></span>TOP</a>
                         </div>
             </div>
             <!--DESCRIPTION VIEW-->
@@ -65,10 +73,11 @@
                             <div class="save-apply-buttons">
                                 <div>
                                     <input id="jobID" name="job_id" type="text" value="<%= data.jobs[0].id%>" hidden>
-                                    <input id= "token" type="hidden" name="_csrf" value="<%= csrfToken %>">
-                                    <button id="buttonSave" class="btn btn-primary" >Save</button>
+                                    <input id="token" type="hidden" name="_csrf" value="<%= csrfToken %>">
+                                    <button id="buttonSave" class="btn btn-primary">Save</button>
                                 </div>
-                                <a id="JobURL" href="<%= data.jobs[0].url %>" target="_blank"><button class="btn btn-success">Apply</button></a>
+                                <a id="JobURL" href="<%= data.jobs[0].url %>" target="_blank"><button
+                                        class="btn btn-success">Apply</button></a>
                             </div>
                         </span>
                     </div>
@@ -82,21 +91,23 @@
                         <h3 class="icon-info">
                             <span class="glyphicon glyphicon-map-marker" class="job-icon"></span>
                             <span id="jobLocation">
-                            <% if(data.jobs[0].candidate_required_location.length < 2) {%>
-                                Not Specified
-                                <%} else { %>
-                                    <%= data.jobs[0].candidate_required_location %>
-                                        <% }  %></span> &nbsp &nbsp<span class="glyphicon glyphicon-briefcase" class="job-icon"></span>
+                                <% if(data.jobs[0].candidate_required_location.length < 2) {%>
+                                    Not Specified
+                                    <%} else { %>
+                                        <%= data.jobs[0].candidate_required_location %>
+                                            <% } %>
+                            </span> &nbsp &nbsp<span class="glyphicon glyphicon-briefcase" class="job-icon"></span>
                             <span id="JobType">
-                                <% if (data.jobs[0].job_type == "full_time") {%>
+                                <% if (data.jobs[0].job_type=="full_time" ) {%>
                                     Full Time
-                                        <%} else if (data.jobs[0].job_type == "contract"){ %>
-                                            Contract
-                                            <% } else if (data.jobs[0].job_type == "other") {%>
-                                                Other
+                                    <%} else if (data.jobs[0].job_type=="contract" ){ %>
+                                        Contract
+                                        <% } else if (data.jobs[0].job_type=="other" ) {%>
+                                            Other
                                             <% } else { %>
                                                 Not Specified
-                                                <% } %></span>
+                                                <% } %>
+                            </span>
                             </span>
                         </h3>
                     </div>

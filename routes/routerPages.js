@@ -31,6 +31,8 @@ router.post('/removejob', auth, pageController.removeJobs)
 //GET updated the NavCount that counts job
 router.get('/updatedNavCount', auth, pageController.updatedNavCount)
 
+router.get('/dashboard', auth, pageController.getBusinessDashboard)
+
 
 
 module.exports = router;

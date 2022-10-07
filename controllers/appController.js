@@ -150,3 +150,43 @@ exports.updatedNavCount = (req, res, next) => {
         jobSavedNumber: ((countingJobsTop))
     })
 }
+
+
+/*************************************************
+ * New from us
+ * ***********************************************/
+exports.getBusinessDashboard = (req, res, next) => {
+    // db.get(items)
+
+    //TOP NAV UPDATE
+    res.render('pages/dashboard', {
+        board: true,
+        title: 'HOME OFFICE POST | Saved Jobs',
+        home: false,
+        login: false,
+        singUp: false,
+        userId: 69420,
+        name: "Kurt Cobain",
+        reviewLink: "www.poop.com",
+        websiteLink: "https://cutedudes.com/",
+        businessEmail: "colerocksatwii@yahoo.com",
+        scores: {
+            detractors: 3,
+            passives: 2,
+            promoters: 68
+        },
+        analytics: {
+            sent: 1000,
+            opened: 50,
+            clicked: 30,
+        },
+        uploads: {
+            uploadId: {
+                purchases: 1000,
+                fileName: "hehehe u r cute",
+                status: "zent",
+                dateUploaded: "10/9/1999"
+            }
+        }
+    })
+}

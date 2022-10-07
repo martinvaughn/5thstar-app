@@ -1,17 +1,19 @@
+require('dotenv').config();
 const bcrypt = require('bcryptjs');
 const crypto = require('crypto');
 const { validationResult } = require('express-validator/check');
 const nodemailer = require('nodemailer');
 
+
 //Config
-const Config = require("../configPrivatInfo")
+// const Config = require("../configPrivatInfo")
 
 //Set up the transporter for the e-mail
 const transporter = nodemailer.createTransport({
-    service: Config.provider,
+    service: process.env.PROVIDER,
     auth: {
-        user: Config.email,
-        pass: Config.pass
+        user: process.env.EMAIL,
+        pass: process.env.PASSWORD,
     }
 });
 
@@ -98,7 +100,7 @@ exports.postSignUp = (req, res, next) => {
         });
     };
 
-    //Incrypt the password
+    //Encrypt the password
     bcrypt
         .hash(password, 12)
         .then(hashedPassword => {
@@ -118,7 +120,7 @@ exports.postSignUp = (req, res, next) => {
                 subject: 'Home Office POST',
                 html: '<div style="text-align: center; padding-top: 40px;"><div style="display:inline-block; width: 500px; text-align: left; background-color: #F6F6F8; padding: 1.5em; border-radius: 8px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);"><h1>Thank You For Singing Up with Home Office POST!</h1><p>Good luck on your job search. Here are a few tips to succeed!</p><p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Doloremque nihil illum fugiat maiores tenetur culpa dolor modi blanditiis doloribus? Excepturi perspiciatis dicta corporis, accusantium illo soluta eligendi possimus eos illum!</p><a href="https://safe-dawn-11858.herokuapp.com/"><p>Home Office Post</p></a></div></div>'
             }
-            transporter.sendMail(mailOptions, function(error, info) {
+            transporter.sendMail(mailOptions, function (error, info) {
                 if (error) {
                     console.log(error);
                 } else {
