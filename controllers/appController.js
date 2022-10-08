@@ -212,7 +212,8 @@ const getMetrics = (emails) => {
         clicks: clicks,
         positive: positive,
         neutral: neutral,
-        negative: negative
+        negative: negative,
+        totalRatings: positive + neutral + negative
     }
 }
 
@@ -226,7 +227,7 @@ exports.getBusinessDashboard = async (req, res, next) => {
     //TOP NAV UPDATE
     res.render('pages/dashboard', {
         board: true,
-        title: 'HOME OFFICE POST | Saved Jobs',
+        title: 'Dashboard | Thanks',
         home: false,
         login: false,
         singUp: false,
@@ -236,24 +237,31 @@ exports.getBusinessDashboard = async (req, res, next) => {
         websiteLink: "https://cutedudes.com/",
         businessEmail: "colerocksatwii@yahoo.com",
         scores: {
-            detractors: 10,
-            passives: 2,
-            promoters: 68,
-            totalRatings: 5
+            detractors: metrics.negative,
+            passives: metrics.neutral,
+            promoters: metrics.positive,
+            totalRatings: metrics.totalRatings
         },
         analytics: {
-            sent: 1000,
-            opened: 50,
-            clicked: 30,
+            sent: metrics.sent,
+            opened: metrics.opens,
+            clicked: metrics.clicks,
         },
-        uploads: {
-            uploadId: {
+        uploads: [
+            {
                 purchases: 1000,
                 fileName: "hehehe u r cute",
                 status: "zent",
                 dateUploaded: "10/9/1999"
+            },
+            {
+                purchases: 5,
+                fileName: "upload #2",
+                status: "zent",
+                dateUploaded: "10/9/1999"
             }
-        },
+        ]
+    },
         jobSavedNumber: ((countingJobsTop))
     })
 }
