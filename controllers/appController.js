@@ -260,8 +260,7 @@ exports.getBusinessDashboard = async (req, res, next) => {
                 status: "zent",
                 dateUploaded: "10/9/1999"
             }
-        ]
-    },
+        ],
         jobSavedNumber: ((countingJobsTop))
     })
 }
