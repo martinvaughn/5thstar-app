@@ -6,11 +6,17 @@
 }
 
 .box {
+    color: white;
     display: flex;
     align-items: center;
     justify-content: space-evenly;
-    border: 1px solid black;
+    border: 3px solid;
     padding: 15px;
+    border-radius: 10px;
+}
+
+.box h1 {
+    font-weight: 400;
 }
 
 .text h1 {
@@ -33,6 +39,7 @@
     width: 100%;
     padding: 15px;
     border: none;
+    border-radius: 20px;
     outline: none;
     cursor: pointer;
     background: #333333;
@@ -110,6 +117,48 @@
     display: grid;
     grid-template-columns: auto auto;
     padding: 20px;
-    border: 1px solid black;
+    /* border: 1px solid black; */
     margin: 1rem;
+    gap: 10px;
+}
+
+.scores-container h2 {
+    font-size: 45px;
+    margin: 0;
+}
+
+.text span {
+    color: #ddd;
+}
+
+.detractors {
+    border-color: #d41938;
+}
+
+.detractors h2 {
+    color: #d41938;
+}
+
+.passives {
+    border-color: #fe9f1e;
+}
+
+.passives h2 {
+    color: #fe9f1e;
+}
+
+.promoters {
+    border-color: #48a256;
+}
+
+.promoters h2 {
+    color: #48a256;
+}
+
+.total-ratings {
+    border-color: steelblue;
+}
+
+.total-ratings h2 {
+    color: steelblue;
 }
