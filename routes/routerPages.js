@@ -6,12 +6,13 @@ const router = express.Router();
 
 //Get the controllers
 const pageController = require("../controllers/appController");
+const emailController = require("../controllers/emailController");
 
 //Require the Authentication Meddleware
 const auth = require('../middleware/is-auth');
 
 /***************************************
- * Commum Roters for the Page
+ * Common Routes for the Page
  ***************************************/
 //Home Router
 router.get('/', pageController.home);
@@ -34,5 +35,10 @@ router.get('/updatedNavCount', auth, pageController.updatedNavCount)
 router.get('/dashboard', auth, pageController.getBusinessDashboard)
 
 
+/***************************************
+ * Email Routes for the Page
+ ***************************************/
+
+router.post('/dashboard', auth, emailController.sendEmailsToCustomers)
 
 module.exports = router;
