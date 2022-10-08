@@ -10,11 +10,13 @@ const nodemailer = require('nodemailer');
 
 //Set up the transporter for the e-mail
 const transporter = nodemailer.createTransport({
-    service: process.env.PROVIDER,
+    host: "mail.smtp2go.com", // Ask mv if this breaks.
+    port: 465,
+    secure: true,
     auth: {
-        user: process.env.EMAIL,
-        pass: process.env.PASSWORD,
-    }
+        user: process.env.EMAIL_USERNAME,
+        pass: process.env.EMAIL_PASSWORD
+    },
 });
 
 const User = require('../models/user');
@@ -72,13 +74,18 @@ exports.getSignUp = (req, res, next) => {
 };
 
 /*************************************************
- * POST LOGIN | SING UP | LOG OUT
+ * POST LOGIN | SIGN UP | LOG OUT
  * ***********************************************/
 //This controller will handle the POST Sing UP Page
 exports.postSignUp = (req, res, next) => {
     //User Information
     const email = req.body.email;
     const password = req.body.password;
+    // HardCoded Attributes...
+    const businessName = "Thanks App";
+    const reviewLink = "www.google.com";
+    const websiteLink = "www.thanks.rip";
+    const businessEmail = "martin@bloom-mktg.com";
 
     //Check for errors set in the router
     const errors = validationResult(req);
@@ -107,6 +114,10 @@ exports.postSignUp = (req, res, next) => {
             const user = new User({
                 email: email,
                 password: hashedPassword,
+                businessName: businessName,
+                businessEmail: businessEmail,
+                reviewLink: reviewLink,
+                websiteLink: websiteLink,
                 preferedJobs: { jobs: [] }
             });
             //save in the database
@@ -115,14 +126,14 @@ exports.postSignUp = (req, res, next) => {
         .then(result => {
             //Sign UP E-mail
             var mailOptions = {
-                from: 'homeofficepost2020@gmail.com',
+                from: '"Thanks" <contact@bloom-mktg.info>',
                 to: email,
-                subject: 'Home Office POST',
-                html: '<div style="text-align: center; padding-top: 40px;"><div style="display:inline-block; width: 500px; text-align: left; background-color: #F6F6F8; padding: 1.5em; border-radius: 8px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);"><h1>Thank You For Singing Up with Home Office POST!</h1><p>Good luck on your job search. Here are a few tips to succeed!</p><p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Doloremque nihil illum fugiat maiores tenetur culpa dolor modi blanditiis doloribus? Excepturi perspiciatis dicta corporis, accusantium illo soluta eligendi possimus eos illum!</p><a href="https://safe-dawn-11858.herokuapp.com/"><p>Home Office Post</p></a></div></div>'
+                subject: 'Welcome to Thanks - a Bloom MKTG Company',
+                message: 'Congrats on joining Thanks, the first email automation platform to bring better reviews to your business.'
             }
             transporter.sendMail(mailOptions, function (error, info) {
                 if (error) {
-                    console.log(error);
+                    console.log("Error Sending Emails: ", error);
                 } else {
                     console.log('Email sent: ' + info.response);
                 }

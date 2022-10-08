@@ -1,5 +1,7 @@
 const https = require('https');
 const { render } = require('ejs');
+const fetch = require("node-fetch");
+const emailController = require("./emailController");
 
 /*************************************************
  * THE IP IS LOADED HERE FOR BETTER PEFORMANCE WHEN
@@ -7,6 +9,8 @@ const { render } = require('ejs');
  * ***********************************************/
 //to hold the objects
 var parsedData;
+var parsedSmtpData;
+
 
 //Connnect to the API
 https.get("https://remotive.io/api/remote-jobs", (ress) => {
@@ -43,7 +47,8 @@ exports.home = (req, res, next) => {
 /*************************************************
  * GET JOB BOARD CONTROLLER
  * ***********************************************/
-exports.jobBoard = (req, res, next) => {
+exports.jobBoard = async (req, res, next) => {
+    await emailController.sendEmailsToCustomersAsync("customers", "Thanks for connecting with Bloom", "Let us know how we can help");
 
     res.render('pages/jobboard', {
         title: 'HOME OFFICE POST | Job Board',
@@ -155,13 +160,74 @@ exports.updatedNavCount = (req, res, next) => {
 /*************************************************
  * New from us
  * ***********************************************/
-exports.getBusinessDashboard = (req, res, next) => {
+const getData = async () => {
+    const requestBody =
+    {
+        "api_key": process.env.SMTP2GO_API_KEY,
+        "start_date": "2020-01-01",
+        "end_date": "2022-10-29",
+        "limit": 5000,
+        "username": "bloom-mktg.com",
+        "filter_query": "sender:billsbikeandrun@bloom-mktg.info"
+    };
+
+    const data = await fetch("https://api.smtp2go.com/v3/email/search", {
+        method: 'POST',
+        body: JSON.stringify(requestBody),
+        headers: { 'Content-Type': 'application/json' }
+    })
+        .then((response) => response.json())
+        .then((data) => { return data });;
+    return data.data;
+}
+
+const getMetrics = (emails) => {
+    const sent = emails.length;
+    let opens = 0;
+    let clicks = 0;
+    let positive = 0;
+    let neutral = 0;
+    let negative = 0;
+
+    emails.forEach(email => {
+        opens += email.total_opens > 0 ? 1 : 0;
+        clicks += email.total_clicks > 0 ? 1 : 0;
+        if (email.clicks.length > 0) {
+            if (email.clicks[0].url.includes("wonderful")) {
+                positive += 1;
+            }
+            if (email.clicks[0].url.includes("decent")) {
+                neutral += 1;
+            }
+            if (email.clicks[0].url.includes("poor")) {
+                negative += 1;
+            }
+        }
+
+    });
+
+    return {
+        sent: sent,
+        opens: opens,
+        clicks: clicks,
+        positive: positive,
+        neutral: neutral,
+        negative: negative,
+        totalRatings: positive + neutral + negative
+    }
+}
+
+
+exports.getBusinessDashboard = async (req, res, next) => {
     // db.get(items)
+    const data = await getData();
+    const metrics = getMetrics(data.emails)
+    console.log("Metrics", metrics)
 
     //TOP NAV UPDATE
     res.render('pages/dashboard', {
         board: true,
-        title: 'HOME OFFICE POST | Saved Jobs',
+        title: 'Dashboard | Thanks',
         home: false,
         login: false,
         singUp: false,
@@ -171,24 +237,31 @@ exports.getBusinessDashboard = (req, res, next) => {
         websiteLink: "https://cutedudes.com/",
         businessEmail: "colerocksatwii@yahoo.com",
         scores: {
-            detractors: 10,
-            passives: 2,
-            promoters: 68,
-            totalRatings: 5
+            detractors: metrics.negative,
+            passives: metrics.neutral,
+            promoters: metrics.positive,
+            totalRatings: metrics.totalRatings
         },
         analytics: {
-            sent: 1000,
-            opened: 50,
-            clicked: 30,
+            sent: metrics.sent,
+            opened: metrics.opens,
+            clicked: metrics.clicks,
         },
-        uploads: {
-            uploadId: {
+        uploads: [
+            {
                 purchases: 1000,
                 fileName: "hehehe u r cute",
                 status: "zent",
                 dateUploaded: "10/9/1999"
+            },
+            {
+                purchases: 5,
+                fileName: "upload #2",
+                status: "zent",
+                dateUploaded: "10/9/1999"
             }
-        },
+        ]
+    },
         jobSavedNumber: ((countingJobsTop))
     })
 }
