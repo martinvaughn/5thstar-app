@@ -63,6 +63,35 @@
     background: #eee;
 }
 
+.past-uploads-table {
+    text-align: center;
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    border: 3px solid #ddd;
+    width: 100%;
+}
+
+.past-uploads-table td, .past-uploads-table th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+.past-uploads-table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.past-uploads-table tr:hover {
+    background-color: #ddd;
+}
+
+.past-uploads-table th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: center;
+    background-color: rgb(7, 136, 93);
+    color: white;
+}
+
 .analytics-container {
     width: 80rem;
     display: flex;
