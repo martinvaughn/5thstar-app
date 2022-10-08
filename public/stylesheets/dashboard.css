@@ -1,0 +1,86 @@
+.dashboard {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.box {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    border: 1px solid black;
+    padding: 15px;
+}
+
+.text h1 {
+    margin: 0;
+}
+
+.accordion {
+    width: 80rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 20px;
+    border: 1px solid black;
+    margin: 1rem;
+}
+
+.accordion__button {
+    display: block;
+    width: 100%;
+    padding: 15px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    background: #333333;
+    color: #fff;
+    /* text-align: left; */
+    transition: background 0.5s;
+}
+
+.accordion__button::after {
+    content: '▲';
+    float: right;
+    /* transform: scale(1.5) */
+}
+
+.accordion__button--active {
+    background-color: #555555;
+}
+
+.accordion__button--active::after {
+    content: '▼';
+}
+
+.accordion__content {
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height 0.5s;
+    padding: 0 15px;
+    background: #eee;
+}
+
+.analytics-container {
+    width: 80rem;
+    display: flex;
+    justify-content: space-evenly;
+    padding: 20px;
+    border: 1px solid black;
+    margin: 1rem;
+}
+
+.analytics-container .box {
+    width: 28%;
+}
+
+.scores-container {
+    width: 80rem;
+    display: grid;
+    grid-template-columns: auto auto;
+    padding: 20px;
+    border: 1px solid black;
+    margin: 1rem;
+}

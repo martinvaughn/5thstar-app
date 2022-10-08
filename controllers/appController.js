@@ -166,14 +166,15 @@ exports.getBusinessDashboard = (req, res, next) => {
         login: false,
         singUp: false,
         userId: 69420,
-        name: "Kurt Cobain",
+        businessName: "Kurt Cobain's Magazines",
         reviewLink: "www.poop.com",
         websiteLink: "https://cutedudes.com/",
         businessEmail: "colerocksatwii@yahoo.com",
         scores: {
-            detractors: 3,
+            detractors: 10,
             passives: 2,
-            promoters: 68
+            promoters: 68,
+            totalRatings: 5
         },
         analytics: {
             sent: 1000,
@@ -187,6 +188,7 @@ exports.getBusinessDashboard = (req, res, next) => {
                 status: "zent",
                 dateUploaded: "10/9/1999"
             }
-        }
+        },
+        jobSavedNumber: ((countingJobsTop))
     })
 }
