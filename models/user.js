@@ -35,8 +35,20 @@ const userSchema = new Schema({
         type: String,
         required: false
     },
+    businessEmailName: {
+        type: String,
+        required: false
+    },
+    uploads: [
+        {
+            purchases: { type: Number, required: true },
+            fileName: { type: String, required: true },
+            status: { type: String, required: true },
+            dateUploaded: { type: Date, default: Date.now() }
 
-    // Define Uploads...
+        }
+    ],
+
 
     Savedjobs: [String]
 });
