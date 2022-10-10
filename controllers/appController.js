@@ -229,7 +229,7 @@ const getMetrics = (emails) => {
 
 exports.getBusinessDashboard = async (req, res, next) => {
     // db.get(items)
-    const data = await getData();
+    const data = await getData(req);
     const metrics = getMetrics(data.emails)
 
     //TOP NAV UPDATE
