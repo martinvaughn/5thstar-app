@@ -3,10 +3,29 @@
     <div class="accordion">
         <button type="button" class="accordion__button"><h1>Upload Customers</h1></button>
         <div class="accordion__content">
-            <input type="file">
-            <div class="past-uploads-table">
-                <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</span>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.14.3/xlsx.full.min.js"></script>
+            <div>
+                <!-- <input id="chartFile" type="file" name="chartFile"/> -->
+                <input id="chartFile" type="file" name="chartFile" accept=".csv"/>
+                <input id= "token" type="hidden" name="_csrf" value="<%= csrfToken %>"/>
+                <button id="chartUpload">Upload</button>
             </div>
+            <table class="past-uploads-table">
+                <tr>
+                    <th>Purchases</th>
+                    <th>File Name</th>
+                    <th>Status</th>
+                    <th>Date Uploaded</th>
+                </tr>
+                <% uploads.forEach(upload => { %>
+                    <tr>
+                        <td><%= upload.purchases %></td>
+                        <td><%= upload.fileName %></td>
+                        <td><%= upload.status %></td>
+                        <td><%= upload.dateUploaded %></td>
+                    </tr>
+                <% }); %>
+            </table>
         </div>
     </div>
     <div class="analytics-container">
