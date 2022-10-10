@@ -4,7 +4,8 @@ const hbs = require('nodemailer-express-handlebars');
 const path = require('path');
 
 
-exports.sendEmailsToCustomersAsync = async (
+const sendEmailsToCustomersAsync = async (
+    req,
     customers,  // List of customer objects 
     subjectLine, // string
     message // string
@@ -40,7 +41,7 @@ exports.sendEmailsToCustomersAsync = async (
     for (var i = 0; i < emails.length; i++) {
         // send mail with transport object
         let info = await transporter.sendMail({
-            from: '"Bills Bikes" <billsbikeandrun@bloom-mktg.info>', // sender address
+            from: `"${req.user.businessName}" <${req.user.businessEmailName}@bloom-mktg.info>`, // sender address
             to: emails[i],
             subject: subjectLine,
             template: 'emailReviewersTemplate', // the name of the template file in views -> emailTemplate.handlebars
@@ -55,22 +56,24 @@ exports.sendEmailsToCustomersAsync = async (
 
 exports.sendEmailsToCustomers = async (req, res, next) => {
     try {
-        // const customers = req.body.customers!;
-        // const fileName = req.body.fileName!;
+        const customers2 = req.body.customers;
+        const fileName2 = req.body.fileName;
+        console.log("customrs & filena", customers2, fileName2);
+
         const fileName = "fileName.js";
         const customers = [
             { name: "Cole MartinDale", email: "martinvaughn16@gmail.com", datePurchased: "10/20/2022" },
             { name: "MarvIn Lawn", email: "martinvaughn.io@gmail.com", datePurchased: "10/20/2022" },
-            { name: "Johnny Goodseed", email: "contact@thanks.rip", datePurchased: "10/20/2022" },
+            { name: "Johnny Goodseed", email: "contact@bloom-mktg.com", datePurchased: "10/20/2022" },
         ]
         const subjectLine = "Thanks!";
         const message = "Thank you for shopping with us. Can you spare a wee little review?";
 
 
         if (customers && subjectLine && message) {
-            // await sendEmailsToCustomersAsync(customers, subjectLine, message).catch((error) => {
-            //     throw new Error(`Error sending emails async: ${error}`)
-            // });
+            await sendEmailsToCustomersAsync(req, customers, subjectLine, message).catch((error) => {
+                throw new Error(`Error sending emails async: ${error}`)
+            });
             req.user.uploads.push({ purchases: customers.length, fileName: fileName, status: "Delivered" })
             req.user.save();
             res.setHeader("Content-Type", "text/html");
