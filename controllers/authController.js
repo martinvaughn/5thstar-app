@@ -76,7 +76,7 @@ exports.getSignUp = (req, res, next) => {
 /*************************************************
  * POST LOGIN | SIGN UP | LOG OUT
  * ***********************************************/
-//This controller will handle the POST Sing UP Page
+//This controller will handle the POST Sign Up Page
 exports.postSignUp = (req, res, next) => {
     //User Information
     const email = req.body.email;
@@ -86,6 +86,7 @@ exports.postSignUp = (req, res, next) => {
     const reviewLink = "www.google.com";
     const websiteLink = "www.thanks.rip";
     const businessEmail = "martin@bloom-mktg.com";
+    const businessEmailName = "billsbikeandrun";
 
     //Check for errors set in the router
     const errors = validationResult(req);
@@ -116,6 +117,7 @@ exports.postSignUp = (req, res, next) => {
                 password: hashedPassword,
                 businessName: businessName,
                 businessEmail: businessEmail,
+                businessEmailName: businessEmailName,
                 reviewLink: reviewLink,
                 websiteLink: websiteLink,
                 preferedJobs: { jobs: [] }
@@ -124,11 +126,12 @@ exports.postSignUp = (req, res, next) => {
             return user.save();
         })
         .then(result => {
+            console.log("sign up result..", result);
             //Sign UP E-mail
             var mailOptions = {
-                from: '"Thanks" <contact@bloom-mktg.info>',
+                from: '"Bloom MKTG" <contact@bloom-mktg.info>',
                 to: email,
-                subject: 'Welcome to Thanks - a Bloom MKTG Company',
+                subject: 'Welcome to 5star - a Bloom MKTG Product',
                 message: 'Congrats on joining Thanks, the first email automation platform to bring better reviews to your business.'
             }
             transporter.sendMail(mailOptions, function (error, info) {

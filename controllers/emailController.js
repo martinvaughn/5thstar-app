@@ -5,12 +5,17 @@ const path = require('path');
 
 
 exports.sendEmailsToCustomersAsync = async (
-    customers,  // List of emails // ,
-    subjectLine, // string,
-    message // string,
+    customers,  // List of customer objects 
+    subjectLine, // string
+    message // string
 ) => {
     // Create a comma separated string from toEmails
-    const emails = ["martinvaughn16@gmail.com", "martinvaughn.io@gmail.com", "martin@bloom-mktg.com"]// customers.join(", ")
+    const emails = [];
+    customers.forEach(customer => {
+        if (customer.email.length > 1) {
+            emails.push(customer.email);
+        }
+    })
 
     let transporter = nodemailer.createTransport({
         host: "mail.smtp2go.com", // Ask mv if this breaks.
@@ -50,22 +55,24 @@ exports.sendEmailsToCustomersAsync = async (
 
 exports.sendEmailsToCustomers = async (req, res, next) => {
     try {
-        // const customers: any = req.body.customers!;
-        // const businessUserId: string = req.body.businessUserId!;
-        // const senderName: string = req.body.senderName!;
+        // const customers = req.body.customers!;
+        // const fileName = req.body.fileName!;
+        const fileName = "fileName.js";
         const customers = [
-            { name: "Cole MartinDale", email: "martinvaughn16@gmail.com", datePurchase: "10/20/2022" },
-            { name: "MarvIn Lawn", email: "martinvaughn.io@gmail.com", datePurchase: "10/20/2022" },
-            { name: "Johnny Goodseed", email: "vau18004@byui.edu", datePurchase: "10/20/2022" },
+            { name: "Cole MartinDale", email: "martinvaughn16@gmail.com", datePurchased: "10/20/2022" },
+            { name: "MarvIn Lawn", email: "martinvaughn.io@gmail.com", datePurchased: "10/20/2022" },
+            { name: "Johnny Goodseed", email: "contact@thanks.rip", datePurchased: "10/20/2022" },
         ]
         const subjectLine = "Thanks!";
         const message = "Thank you for shopping with us. Can you spare a wee little review?";
 
 
         if (customers && subjectLine && message) {
-            await sendEmailsToCustomersAsync(customers, subjectLine, message).catch((error) => {
-                throw new Error(`Error sending emails async: ${error}`)
-            });
+            // await sendEmailsToCustomersAsync(customers, subjectLine, message).catch((error) => {
+            //     throw new Error(`Error sending emails async: ${error}`)
+            // });
+            req.user.uploads.push({ purchases: customers.length, fileName: fileName, status: "Delivered" })
+            req.user.save();
             res.setHeader("Content-Type", "text/html");
             res.status(200).send("Emails Sent.");
         } else {

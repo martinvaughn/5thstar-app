@@ -48,7 +48,15 @@ exports.home = (req, res, next) => {
  * GET JOB BOARD CONTROLLER
  * ***********************************************/
 exports.jobBoard = async (req, res, next) => {
-    await emailController.sendEmailsToCustomersAsync("customers", "Thanks for connecting with Bloom", "Let us know how we can help");
+    const customers = [
+        { name: "Cole MartinDale", email: "martinvaughn16@gmail.com", datePurchased: "10/20/2022" },
+        { name: "MarvIn Lawn", email: "martinvaughn.io@gmail.com", datePurchased: "10/20/2022" },
+        { name: "Johnny Goodseed", email: "contact@thanks.rip", datePurchased: "10/20/2022" },
+    ]
+
+    req.user.uploads.push({ purchases: customers.length, fileName: "fileName", status: "Delivered" })
+    req.user.save();
+    // await emailController.sendEmailsToCustomersAsync(customers, "Thanks for connecting with Bloom", "Let us know how we can help");
 
     res.render('pages/jobboard', {
         title: 'HOME OFFICE POST | Job Board',
@@ -160,7 +168,8 @@ exports.updatedNavCount = (req, res, next) => {
 /*************************************************
  * New from us
  * ***********************************************/
-const getData = async () => {
+const getData = async (req) => {
+    const senderAlias = req.user.businessEmailName || "noreply";
     const requestBody =
     {
         "api_key": process.env.SMTP2GO_API_KEY,
@@ -168,7 +177,7 @@ const getData = async () => {
         "end_date": "2022-10-29",
         "limit": 5000,
         "username": "bloom-mktg.com",
-        "filter_query": "sender:billsbikeandrun@bloom-mktg.info"
+        "filter_query": `sender:${senderAlias}@bloom-mktg.info`
     };
 
     const data = await fetch("https://api.smtp2go.com/v3/email/search", {
@@ -222,7 +231,6 @@ exports.getBusinessDashboard = async (req, res, next) => {
     // db.get(items)
     const data = await getData();
     const metrics = getMetrics(data.emails)
-    console.log("Metrics", metrics)
 
     //TOP NAV UPDATE
     res.render('pages/dashboard', {
@@ -247,20 +255,20 @@ exports.getBusinessDashboard = async (req, res, next) => {
             opened: metrics.opens,
             clicked: metrics.clicks,
         },
-        uploads: [
-            {
-                purchases: 1000,
-                fileName: "hehehe u r cute",
-                status: "zent",
-                dateUploaded: "10/9/1999"
-            },
-            {
-                purchases: 5,
-                fileName: "upload #2",
-                status: "zent",
-                dateUploaded: "10/9/1999"
-            }
-        ],
+        uploads: req.user.uploads || [], // [
+        //     {
+        //         purchases: 1000,
+        //         fileName: "hehehe u r cute",
+        //         status: "zent",
+        //         dateUploaded: "10/9/1999"
+        //     },
+        //     {
+        //         purchases: 5,
+        //         fileName: "upload #2",
+        //         status: "zent",
+        //         dateUploaded: "10/9/1999"
+        //     }
+        // ],
         jobSavedNumber: ((countingJobsTop))
     })
 }
