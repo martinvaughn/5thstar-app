@@ -3,7 +3,13 @@
     <div class="accordion">
         <button type="button" class="accordion__button"><h1>Upload Customers</h1></button>
         <div class="accordion__content">
-            <input type="file">
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.14.3/xlsx.full.min.js"></script>
+            <div>
+                <!-- <input id="chartFile" type="file" name="chartFile"/> -->
+                <input id="chartFile" type="file" name="chartFile" accept=".csv"/>
+                <input id= "token" type="hidden" name="_csrf" value="<%= csrfToken %>"/>
+                <button id="chartUpload">Upload</button>
+            </div>
             <table class="past-uploads-table">
                 <tr>
                     <th>Purchases</th>
