@@ -261,6 +261,5 @@ exports.getBusinessDashboard = async (req, res, next) => {
                 dateUploaded: "10/9/1999"
             }
         ],
-        jobSavedNumber: ((countingJobsTop))
     })
 }
