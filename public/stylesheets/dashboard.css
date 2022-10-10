@@ -1,3 +1,10 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,800');
+
+:root {
+    --blue: #23AE6D;
+    --yellow: #FFC830;
+}
+
 .dashboard {
     display: flex;
     flex-direction: column;
