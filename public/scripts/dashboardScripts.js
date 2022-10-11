@@ -12,7 +12,7 @@ document.querySelectorAll('.accordion__button').forEach(button => {
     });
 });
 
-$(function() {
+(function() {
     const parseData = [];
     var fileName = "";
     function uploadDealcsv () {}; 

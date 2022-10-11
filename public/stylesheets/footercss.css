@@ -1,5 +1,17 @@
 /*Footer*************/
 
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600;700&display=swap');
+
+:root {
+    --green: #00C29A;
+    --yellow: #F8FD99;
+    --purple: #C89AFE;
+    --blue: #50A2FF;
+    --dark-gray: #131417;
+    --gray: #1b1f24;
+    --white: #e9eaea;
+}
+
 html,
 body {
     height: 100%;
@@ -8,35 +20,37 @@ body {
 }
 
 .top-footer {
-    background-color: #F6F6F8;
+    background-color: var(--dark-gray);
     height: 175px;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     font-size: 15px;
-    font-family: Arial, Helvetica, sans-serif;
-    color: #002E5D;
+    font-family: Montserrat, sans-serif;
+    color: #fff;
     padding-top: 25px;
 }
 
 .top-footer h4 {
-    font-weight: bold;
+    /* font-weight: bold; */
     font-variant: small-caps;
     margin-left: 40%;
-    color: #000000;
+    color: #fff;
 }
 
 .top-footer li {
     list-style-type: none;
     margin-left: 35%;
+    color: #fff;
 }
 
 .top-footer a {
     text-decoration: none;
+    color: #fff;
 }
 
 .top-footer a:visited {
     text-decoration: none;
-    color: #002E5D;
+    color: var(--purple);
 }
 
 .top-footer img {
@@ -53,7 +67,7 @@ footer h2 {
 }
 
 .top-footer a:link {
-    color: #002E5D;
+    color: #fff;
 }
 
 #footer {
@@ -68,11 +82,8 @@ footer h2 {
         display: flex;
         flex-direction: column;
         margin-bottom: 230px;
-        background-color: #F6F6F8;
     }
-    footer {
-        background-color: #F6F6F8;
-    }
+
     #footer-links {
         display: flex;
         margin-left: 25%;
@@ -92,6 +103,5 @@ footer h2 {
         flex-direction: column;
         margin-bottom: 230px;
         margin-right: 100px;
-        background-color: #F6F6F8;
     }
 }

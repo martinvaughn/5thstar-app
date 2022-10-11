@@ -133,7 +133,7 @@ hr {
 
 /*RESPONSIVENESS*/
 
-@media screen and (max-width: 850px) {
+/* @media screen and (max-width: 850px) {
     #board-container {
         display: block;
     }
@@ -157,4 +157,4 @@ hr {
     .job-basic-info h3 {
         padding-left: 1em;
     }
-}
+} */

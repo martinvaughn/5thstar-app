@@ -245,9 +245,9 @@ exports.getBusinessDashboard = async (req, res, next) => {
         websiteLink: "https://cutedudes.com/",
         businessEmail: "colerocksatwii@yahoo.com",
         scores: {
-            detractors: metrics.negative,
-            passives: metrics.neutral,
-            promoters: metrics.positive,
+            negative: metrics.negative,
+            neutral: metrics.neutral,
+            positive: metrics.positive,
             totalRatings: metrics.totalRatings
         },
         analytics: {
