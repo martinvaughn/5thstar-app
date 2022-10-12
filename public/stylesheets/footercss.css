@@ -57,13 +57,25 @@ body {
     border-radius: 50%;
 }
 
+.footer-bottom {
+    background-color: var(--gray);
+    height: 10rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 footer h2 {
-    background-color: #C5C6C8;
-    color: #FFFFFF;
-    margin-top: 0px;
-    padding: 1em;
+    background-color: var(--dark-gray);
+    color: var(--white);
+    margin: 0;
+    padding: 2rem;
+    border-radius: 5px;
     font-size: 25px;
     text-align: center;
+    width: 95%;
+    height: 70%;
+    font-family: "Montserrat", sans-serif;
 }
 
 .top-footer a:link {

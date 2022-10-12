@@ -15,9 +15,10 @@
                         </div>
 
                     </div> -->
-                    <div class="container-2">
-                        <div class='form-container'>
-                            <form class="signup-form" action="/signup" method="POST" novalidate>
+                    <!-- <input type="password" id="pw-id"> -->
+                    <div class="container-signup" id="container-signup">
+                        <div class='form-container-signup form-container' id="form-container-signup">
+                            <form class="signup-form form" id="signup-formy" action="/signup" method="POST" novalidate>
                                 <div class="header">
                                     <div class="green"></div>
                                     <div class="yellow"></div>
@@ -27,6 +28,22 @@
                                 <label for="inputEmail">Email address</label>
                                 <p>
                                     <input type="email" name="email" id="email" class="form-control" value="<%= oldInput.email %>" required autofocus>
+                                </p>
+                                <label for="business-name">Business Name</label>
+                                <p>
+                                    <input type="text" id="business-name" name="business-name" class="form-control" required autofocus>
+                                </p>
+                                <label for="business-email-name">Alias Email</label>
+                                <p>
+                                    <input type="text" id="business-email-name" name="business-email-name" class="form-control" required autofocus>
+                                </p>
+                                <label for="review-link">Review Link</label>
+                                <p>
+                                    <input type="text" id="review-link" name="review-link" class="form-control" required autofocus>
+                                </p>
+                                <label for="website-link">Website Link</label>
+                                <p>
+                                    <input type="text" id="website-link" name="website-link" class="form-control" required autofocus>
                                 </p>
                                 <label for="inputPassword">Password</label>
                                 <p>
@@ -41,14 +58,26 @@
                                     <div class="erroMessage">
                                         <%= errorMessage %>
                                     </div>
-                                    <% } %>
-                                        <input type="hidden" name="_csrf" value="<%= csrfToken %>">
-                                        <br>
-                                        <p><input type="submit" value="Sign up"></p>
+                                <% } %>
+                                <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                                <br>
+                                <p><input type="submit" value="Sign up"></p>
                                         <!-- <button class="btn btn-lg btn-primary btn-block" type="submit">Login</button> -->
-
                                         <!-- <p class="mt-5 mb-3 text-muted">&copy; 2021</p> -->
                             </form>
+
+                            <div class="signup-protection-container" id="protection-container">
+                                <div>
+                                    <span class="glyphicon glyphicon-lock signup-protection"></span>
+                                </div>
+                                <br>
+                                <p>
+                                    <input type="password" id="signup-password" class="form-control">
+                                </p>
+                                <script>
+                                    
+                                </script> 
+                            </div>
                         </div>
                     </div>
                 </div>

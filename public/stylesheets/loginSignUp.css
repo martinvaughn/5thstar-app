@@ -48,7 +48,7 @@
     padding-bottom: 5rem;
 }
 
-.container-2 {
+.container-signup {
     position: relative;
     border-bottom-right-radius: 3px;
     border-bottom-left-radius: 3px;
@@ -59,7 +59,30 @@
     font-family: "Montserrat", sans-serif;
 }
 
-.form-container {
+.container-login {
+    position: relative;
+    border-bottom-right-radius: 3px;
+    border-bottom-left-radius: 3px;
+    background: var(--dark-gray);
+    width: 400px;
+    height: 500px;
+    overflow: hidden;
+    font-family: "Montserrat", sans-serif;
+}
+
+.form-container-signup {
+    position: absolute;
+    width: 400px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+    opacity: 1;
+    transition: all 0.5s cubic-bezier(0.86, 0, 0.07, 1);
+}
+
+.form-container-login {
     position: absolute;
     width: 400px;
     height: 100%;
@@ -75,6 +98,8 @@
     color: var(--white);
     font-family: 'Montserrat', sans-serif;
     font-weight: 300;
+    margin-top: 0;
+    margin-bottom: 0;
 }
 
 #two {
@@ -159,8 +184,8 @@ p:not(.submit):hover::before {
 }
 
 input[type="submit"] {
-    color: var(--white);
-    background: var(--gray);
+    color: var(--dark-gray);
+    background: var(--green);
     font-weight: 500;
     font-family: "Montserrat", sans-serif;
     text-transform: uppercase;
@@ -282,14 +307,15 @@ p.submit {
 }
 
 .signup-form {
-    display: flex;
+    display: none;
     flex-direction: column;
 }
 
-.signup-form h1 {
+.form h1 {
     text-align: center;
-    margin-bottom: 2rem;
     margin-left: 8px;
+    text-transform: uppercase;
+    font-size: 34px;
 }
 
 .form-control {
@@ -302,6 +328,7 @@ p.submit {
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-bottom: 2rem;
 }
 
 .green {
@@ -326,4 +353,45 @@ p.submit {
     border-radius: 2px;
     background-color: var(--blue);
     margin: 2px;
+}
+
+.signup-protection-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.signup-protection {
+    font-size: 46px;
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+#signup-password {
+    border: 2px solid #999;
+    
+    /* 2 animations: shake, and glow red */
+    /* animation-name: shake, glow-red; */
+    animation-duration: 0.7s, 0.35s;
+    animation-iteration-count: 1, 2;
+}
+
+@keyframes shake {
+    0%, 20%, 40%, 60%, 80% {
+        transform: translateX(8px);
+    }
+    10%,
+    30%,
+    50%,
+    70%,
+    90% {
+        transform: translateX(-8px);
+    }
+}
+
+@keyframes glow-red {
+    50% {
+        border-color: indianred;
+    }
 }

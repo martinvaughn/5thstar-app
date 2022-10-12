@@ -1,41 +1,41 @@
-// /*global console, alert, confirm, prompt*/
-// var forms = document.forms;
-// p = document.querySelectorAll('p'),
-// input = document.querySelectorAll('input:not([type="submit"])'),
-// submit = document.querySelectorAll('input[type="submit"]');
-// password = input[2],
-// password2 = document.getElementById('passwordIn'),
-// email = input[1],
-// email2 = document.getElementById('emailIn');
+/*global console, alert, confirm, prompt*/
+var forms = document.forms;
+p = document.querySelectorAll('p'),
+input = document.querySelectorAll('input:not([type="submit"])'),
+submit = document.querySelectorAll('input[type="submit"]');
+password = input[2],
+password2 = document.getElementById('passwordIn'),
+email = input[1],
+email2 = document.getElementById('emailIn');
 
-// [].forEach.call(input, function(inputE) {
-//     'use strict';
+[].forEach.call(input, function(inputE) {
+    'use strict';
 
-//     inputE.addEventListener('focus', function() {
-//         'use strict';
-//         inputE.parentNode.previousElementSibling.style.color = '#FDED62';
-//         inputE.style.transform = 'translate(5px, 5px)';
-//     });
+    inputE.addEventListener('focus', function() {
+        'use strict';
+        inputE.parentNode.previousElementSibling.style.color = '#FDED62';
+        inputE.style.transform = 'translate(5px, 5px)';
+    });
 
-//     inputE.addEventListener('blur', function() {
-//         'use strict';
-//         // console.log('blur');
-//         inputE.parentNode.previousElementSibling.style.color = '#fff';
-//         inputE.style.transform = 'translate(0px, 0px)';
-//     });
-//     /*
-//     inputE.addEventListener('mouseout', function () {
-//         'use strict';
-//         console.log('out');
-//         inputE.style.transform = 'translate(0px, 0px)';
-//     });
+    inputE.addEventListener('blur', function() {
+        'use strict';
+        // console.log('blur');
+        inputE.parentNode.previousElementSibling.style.color = '#fff';
+        inputE.style.transform = 'translate(0px, 0px)';
+    });
+    /*
+    inputE.addEventListener('mouseout', function () {
+        'use strict';
+        console.log('out');
+        inputE.style.transform = 'translate(0px, 0px)';
+    });
 
-//     inputE.addEventListener('mouseover', function () {
-//         'use strict';
-//         inputE.style.transform = 'translate(5px, 5px)';
-//     });
-//     */
-// });
+    inputE.addEventListener('mouseover', function () {
+        'use strict';
+        inputE.style.transform = 'translate(5px, 5px)';
+    });
+    */
+});
 
 // function checkPassword(e) {
 //     'use strict';
@@ -109,3 +109,25 @@
 //     }
 
 // });
+
+var passwordInput = document.getElementById("signup-password");
+passwordInput.addEventListener("keyup", function(e) {
+    if (e.keyCode === 13) {
+        e.preventDefault();
+        const protectionContainer = document.getElementById("protection-container");
+        const signupForm = document.getElementById("signup-formy");
+        const signupPassword = document.getElementById("signup-password")
+        const signupContainer = document.getElementById("container-signup")
+        if (e.target.value === "123456") {
+            console.log(777)
+            protectionContainer.style.display = "none";
+            signupContainer.style.height = "700px";
+            signupForm.style.display = "flex";
+        } else {
+            signupPassword.style.animationName = "shake, glow-red";
+            setTimeout(() => {
+                signupPassword.style.animationName = "none";
+            }, 500)
+        }                                          
+    }
+});

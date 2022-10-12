@@ -162,6 +162,11 @@ body {
     }
 } */
 
+.partition {
+    font-family: "Montserrat", sans-serif;
+    font-size: 26px;
+}
+
 .glyphicon-user,
 .glyphicon,
 .glyphicon-home {
