@@ -12,20 +12,12 @@
     --white: #e9eaea;
 }
 
-html,
-body {
-    height: 100%;
-    margin: 0px;
-    background-color: #262629;
-}
-
 .top-footer {
     background-color: var(--dark-gray);
     height: 175px;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     font-size: 15px;
-    font-family: Montserrat, sans-serif;
     color: #fff;
     padding-top: 25px;
 }
@@ -75,7 +67,6 @@ footer h2 {
     text-align: center;
     width: 95%;
     height: 70%;
-    font-family: "Montserrat", sans-serif;
 }
 
 .top-footer a:link {

@@ -90,14 +90,6 @@ document.querySelectorAll('.accordion__button').forEach(button => {
                 console.log("Fail to sent data - POST AJAX /DASHBOARD ");
             }
         });
-
-        // setTimeout(function() {
-        //     //Update the had so it can count the jobs saved!
-        //     $.get('/updatedNavCount', function(data) {
-        //         $('#logged-in-nav').html(data);
-        //     })
-        // }, 500)
-
     });
 })
 

@@ -1,5 +1,7 @@
 <%- include('../includes/head.ejs') %>
     <link rel="stylesheet" href="stylesheets/loginSignUp.css">
+    
+    
     </head>
 
     <body>
@@ -67,19 +69,20 @@
                             </form>
 
                             <div class="signup-protection-container" id="protection-container">
-                                <div>
+                                <div class="lock-glyph-container">
                                     <span class="glyphicon glyphicon-lock signup-protection"></span>
+                                    <span class="glyphicon glyphicon-lock signup-protection-2"></span>
+                                    <span class="glyphicon glyphicon-lock signup-protection-3"></span>
                                 </div>
                                 <br>
                                 <p>
                                     <input type="password" id="signup-password" class="form-control">
                                 </p>
-                                <script>
-                                    
-                                </script> 
+                                <script src="scripts/signupScripts.js"></script>
                             </div>
                         </div>
                     </div>
                 </div>
+                <script src="scripts/loginSignupScripts.js"></script>
             </main>
             <%- include('../includes/foot.ejs') %>

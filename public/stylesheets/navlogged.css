@@ -10,23 +10,18 @@
     --white: #e9eaea;
 }
 
-#logged-in-nav {
-    background-color: #ffffff;
-    border-color: #ffffff;
-}
-
 #logged-in-nav .navbar-toggle {
-    background-color: black;
+    background-color: var(--gray);
 }
 
 .navbar-toggle .icon-bar {
-    background-color: #ffffff;
+    background-color: var(--white);
 }
 
 #logged-in-nav a {
     font-size: 16px;
     font-weight: bold;
-    color: #000000;
+    color: var(--white);
 }
 
 .navbar-nav li:hover {
@@ -34,7 +29,7 @@
 }
 
 #logged-in-nav .nav-a:hover {
-    color: #AA2626;
+    color: var(--green);
     margin-top: -2px;
 }
 
@@ -50,20 +45,6 @@
 
 .glyphicon-log-in {
     left: -2px;
-}
-
-/* .navbar-left {
-    margin-top: 9.5px;
-} */
-
-#savedNumber {
-    background-color: #E3E3E5;
-    margin-left: 3px;
-    height: 5px;
-    width: 5px;
-    border-radius: 50%;
-    padding: 0.2em;
-    color: #AA2626;
 }
 
 /* COLE'S STYLING */
@@ -95,11 +76,8 @@
 
 .app-name {
     margin: 0;
-    /* color: var(--yellow); */
-    /* background-color: var(--purple); */
     padding: 10px;
     border-radius: 15px;
-    font-family: Montserrat, SANS-SERIF;
     font-size: 30px;
     font-weight: 300;
 }
@@ -117,10 +95,6 @@ Home Page Style
     --dark-gray: #131417;
     --gray: #1b1f24;
     --white: #e9eaea;
-}
-
-body {
-    margin: 0px;
 }
 
 .navbar {
@@ -146,24 +120,7 @@ body {
     margin-top: 7px;
 }
 
-/* @media (min-width: 768px) {
-    .navbar-right {
-        float: right!important;
-        margin-right: 200px;
-        font-size: 20px;
-    }
-}
-
-@media (max-width: 768px) {
-    .main-log {
-        margin-left: 0px;
-        height: 40px;
-        margin-top: 7px;
-    }
-} */
-
-.partition {
-    font-family: "Montserrat", sans-serif;
+.partition { 
     font-size: 26px;
 }
 
@@ -174,7 +131,6 @@ body {
 }
 
 .navbar .sing-incons {
-    color: black;
     font-weight: bolder;
     display: flex;
     justify-content: space-between;
@@ -183,7 +139,6 @@ body {
 .sing-incons div {
     margin-left: 18px;
     color: var(--white);
-    font-family: Montserrat, sans-serif;
     font-weight: 300;
     font-size: 18px;
 }
@@ -192,9 +147,6 @@ body {
     text-decoration: underline;
 }
 
-.li-sings:hover {
-    background-color: white;
-}
 
 .jumbotron {
     background-image: url(/images/homepage/home-home-office-background.jpeg);
@@ -223,20 +175,6 @@ body {
 /***************************
 Styles from boostrap
 ***************************/
-
-
-/* GLOBAL STYLES
--------------------------------------------------- */
-
-
-/* Padding below the footer and lighter body text */
-
-body {
-    padding-top: 3rem;
-    padding-bottom: 3rem;
-    color: #5a5a5a;
-}
-
 
 /* CUSTOMIZE THE CAROUSEL
   -------------------------------------------------- */
@@ -309,24 +247,3 @@ body {
     line-height: 1;
     letter-spacing: -.05rem;
 }
-
-
-/* RESPONSIVE CSS
-  -------------------------------------------------- */
-/* 
-@media (min-width: 40em) {
-    .carousel-caption p {
-        margin-bottom: 1.25rem;
-        font-size: 1.25rem;
-        line-height: 1.4;
-    }
-    .featurette-heading {
-        font-size: 50px;
-    }
-}
-
-@media (min-width: 62em) {
-    .featurette-heading {
-        margin-top: 7rem;
-    }
-} */

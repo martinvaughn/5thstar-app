@@ -8,6 +8,7 @@
     --dark-gray: #131417;
     --gray: #1b1f24;
     --white: #e9eaea;
+    --red: #ff6961;
 }
 
 .dashboard {
@@ -15,24 +16,38 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin-top: 11.5rem;
 }
 
-.box {
-    color: white;
+.box { 
     display: flex;
     align-items: center;
     justify-content: space-evenly;
     border: 3px solid;
-    padding: 15px;
+    padding: 2rem;
     border-radius: 10px;
+    background-color: var(--dark-gray);
+    box-shadow: 5px 7px var(--white);
 }
 
 .box h1 {
-    font-weight: 400;
+    font-weight: 300;
+}
+
+.text {
+    text-align: center;
+}
+
+.text span {
+    font-weight: 300;
+    color: rgb(219, 219, 219);
 }
 
 .text h1 {
     margin: 0;
+    font-size: 32px;
+    /* text-transform: uppercase; */
+    font-weight: 400;
 }
 
 .accordion {
@@ -42,8 +57,7 @@
     align-items: center;
     flex-direction: column;
     padding: 20px;
-    border: 1px solid black;
-    margin: 1rem;
+    margin: 3rem;
 }
 
 .accordion__button {
@@ -54,10 +68,14 @@
     border-radius: 20px;
     outline: none;
     cursor: pointer;
-    background: #333333;
-    color: #fff;
-    /* text-align: left; */
+    border: 3px solid var(--green);
+    box-shadow: 5px 7px var(--green);
+    background: var(--dark-gray);
     transition: background 0.3s;
+}
+
+.accordion__button h1 {
+    font-weight: 400;
 }
 
 .accordion__button::after {
@@ -67,7 +85,7 @@
 }
 
 .accordion__button--active {
-    background-color: #555555;
+    background-color: #2a2e34;
 }
 
 .accordion__button--active::after {
@@ -77,61 +95,75 @@
 .accordion__content {
     overflow: hidden;
     max-height: 0;
+    width: 95%;
     transition: max-height 0.3s;
     padding: 0 15px;
-    background: #eee;
+    background: var(--dark-gray);
 }
 
 .past-uploads-table {
     text-align: center;
-    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
     border-collapse: collapse;
-    border: 3px solid #ddd;
+    border: 3px solid var(--dark-gray);
     width: 100%;
 }
 
 .past-uploads-table td, .past-uploads-table th {
-    border: 1px solid #ddd;
+    border: 1px solid var(--dark-gray);
     padding: 8px;
 }
 
 .past-uploads-table tr:nth-child(even) {
-    background-color: #f2f2f2;
+    background-color: var(--gray);
 }
 
 .past-uploads-table tr:hover {
-    background-color: #ddd;
+    background-color: var(--yellow);
+    color: var(--dark-gray);
 }
 
 .past-uploads-table th {
     padding-top: 12px;
     padding-bottom: 12px;
     text-align: center;
-    background-color: rgb(7, 136, 93);
-    color: white;
+    background-color: var(--blue);
 }
 
 .analytics-container {
     width: 80rem;
     display: flex;
-    justify-content: space-evenly;
-    padding: 20px;
-    border: 1px solid black;
-    margin: 1rem;
+    justify-content: space-between;
+    padding: 3rem;
+    margin: 3rem;
+}
+
+.analytics-container * {
+    margin: 0;
 }
 
 .analytics-container .box {
-    width: 28%;
+    width: 31%;
+    display: flex;
+    justify-content: center;
+}
+
+.analytics-container h1 {
+    font-size: 32px;
+}
+
+.analytics-container h2 {
+    font-size: 34px;
 }
 
 .scores-container {
     width: 80rem;
     display: grid;
-    grid-template-columns: auto auto;
-    padding: 20px;
-    /* border: 1px solid black; */
-    margin: 1rem;
-    gap: 10px;
+    grid-template-columns: 36.3rem 36.3rem;
+    justify-content: center;
+    padding: 3rem;
+    border-radius: 5px;
+    margin: 3rem;
+    gap: 2rem;
 }
 
 .scores-container h2 {
@@ -139,38 +171,38 @@
     margin: 0;
 }
 
-.text span {
-    color: #ddd;
-}
-
 .detractors {
-    border-color: #d41938;
+    border-color: var(--red);
+    box-shadow: 5px 7px var(--red);
 }
 
 .detractors h2 {
-    color: #d41938;
+    color: var(--red);
 }
 
 .passives {
-    border-color: #fe9f1e;
+    border-color: var(--yellow);
+    box-shadow: 5px 7px var(--yellow);
 }
 
 .passives h2 {
-    color: #fe9f1e;
+    color: var(--yellow);
 }
 
 .promoters {
-    border-color: #48a256;
+    border-color: var(--green);
+    box-shadow: 5px 7px var(--green);
 }
 
 .promoters h2 {
-    color: #48a256;
+    color: var(--green);
 }
 
 .total-ratings {
-    border-color: steelblue;
+    border-color: var(--blue);
+    box-shadow: 5px 7px var(--blue);
 }
 
 .total-ratings h2 {
-    color: steelblue;
+    color: var(--blue);
 }
