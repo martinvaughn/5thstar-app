@@ -24,7 +24,7 @@ $(function() {
 
             if (this.files && this.files[0]) {
                 var myFile = this.files[0];
-                console.log(this.files[0].name)
+                // console.log(this.files[0].name)
                 fileName = this.files[0].name;
                 var reader = new FileReader();
                 
@@ -48,7 +48,7 @@ $(function() {
             parseData.push(newLinebrk[i].split(","))
         }
 
-        console.log(parseData, "THIS IS ME PARSE DATA");
+        // console.log(parseData, "THIS IS ME PARSE DATA");
     }
 
     var parseCsv = new uploadDealcsv();
@@ -71,7 +71,7 @@ $(function() {
                 datePurchase: row[2] 
             }
         })
-        console.log(customers, "CUSTIGNIADNUENFUNBQEIOU")
+        // console.log(customers, "CUSTIGNIADNUENFUNBQEIOU")
         var values = {
                 customers: customers,
                 _csrf: $("#token").val()
@@ -86,7 +86,7 @@ $(function() {
                 _csrf: $("#token").val()
             },
             success: function() {
-                console.log("SHUCKS")
+                // console.log("SHUCKS")
                 loader.style.display = "none";
                 uploadButton.style.display = "block";
                 successMsg.style.display = "block";

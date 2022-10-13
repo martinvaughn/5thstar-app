@@ -24,6 +24,10 @@ body {
 
 #content-wrap {
     padding-bottom: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 #footer {

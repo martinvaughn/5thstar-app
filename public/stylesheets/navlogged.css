@@ -37,16 +37,6 @@
     margin-top: -4px;
 }
 
-.glyphicon {
-    color: var(--green);
-    font-size: 20px;
-    top: 0;
-}
-
-.glyphicon-log-in {
-    left: -2px;
-}
-
 /* COLE'S STYLING */
 
 .container-fluid {
@@ -72,6 +62,22 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    width: 30%;
+}
+
+.navbar-right li {
+    padding: 1rem;
+    border-radius: 7px;
+}
+
+.navbar-right li:first-of-type {
+    width: 29%;
+    cursor: pointer;
+}
+
+.navbar-right li:last-of-type {
+    width: 35%;
+    cursor: pointer;
 }
 
 .app-name {
@@ -85,34 +91,49 @@
 /****************************************
 Home Page Style
 *****************************************/
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600;700&display=swap');
-
-:root {
-    --green: #00C29A;
-    --yellow: #F8FD99;
-    --purple: #C89AFE;
-    --blue: #50A2FF;
-    --dark-gray: #131417;
-    --gray: #1b1f24;
-    --white: #e9eaea;
-}
-
 .navbar {
     background-color: var(--dark-gray);
+    color: var(--white);
     border: none;
-    padding: 15px;
+    padding: 1rem 4rem 1rem 4rem;
     display: flex;
     justify-content: space-between;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 500;
 }
 
-.navbar-right li {
-    transition: all 300ms;
-}
-
-.navbar-right li:hover {
+.navbar-right li:first-of-type:hover {
+    transition: all 400ms ease-in-out;
     background-color: var(--gray);
-    border-radius: 15px;
 }
+
+.navbar-right li:last-of-type:hover {
+    transition: all 400ms ease-in-out;
+    background-color: var(--gray);
+}
+
+.navbar-right li:hover .fa-solid{
+    color: var(--green);
+    transition: 400ms ease-in-out;
+    transform: rotateY(180deg);
+    text-decoration: none;
+}
+
+.navbar-right li .fa-solid{
+    transition: 400ms ease-in-out;
+}
+
+.navbar-right .partition:hover {
+    background-color: none;
+}
+
+.navbar-right .nav-icon {
+    font-size: 18px;
+}
+
 
 .main-log {
     margin-left: 200px;
@@ -124,29 +145,20 @@ Home Page Style
     font-size: 26px;
 }
 
-.glyphicon-user,
-.glyphicon,
-.glyphicon-home {
-    color: var(--green);
-}
-
-.navbar .sing-incons {
+.nav-icon {
     font-weight: bolder;
     display: flex;
     justify-content: space-between;
+    color: var(--white);
+    text-decoration: none;
 }
 
-.sing-incons div {
-    margin-left: 18px;
+.nav-icon div {
+    /* margin-left: 15%; */
     color: var(--white);
     font-weight: 300;
     font-size: 18px;
 }
-
-.sing-incons div:hover {
-    text-decoration: underline;
-}
-
 
 .jumbotron {
     background-image: url(/images/homepage/home-home-office-background.jpeg);
@@ -171,79 +183,24 @@ Home Page Style
     width: 320px;
 }
 
-
-/***************************
-Styles from boostrap
-***************************/
-
-/* CUSTOMIZE THE CAROUSEL
-  -------------------------------------------------- */
-
-
-/* Carousel base class */
-
-.carousel {
-    margin-bottom: 4rem;
+#logged-in-nav .partition {
+    margin: 5px;
 }
 
-
-/* Since positioning the image, we need to help out the caption */
-
-.carousel-caption {
-    bottom: 3rem;
-    z-index: 10;
-}
-
-
-/* Declare heights because of positioning of img element */
-
-.carousel-item {
-    height: 32rem;
-}
-
-.carousel-item>img {
-    position: absolute;
-    top: 0;
-    left: 0;
-    min-width: 100%;
-    height: 32rem;
-}
-
-
-/* MARKETING CONTENT
-  -------------------------------------------------- */
-
-
-/* Center align the text within the three columns below the carousel */
-
-.marketing .col-lg-4 {
-    margin-bottom: 1.5rem;
-    text-align: center;
-}
-
-.marketing h2 {
-    font-weight: 400;
-}
-
-.marketing .col-lg-4 p {
-    margin-right: .75rem;
-    margin-left: .75rem;
-}
-
-
-/* Featurettes
-  ------------------------- */
-
-.featurette-divider {
-    margin: 5rem 0;
-    /* Space out the Bootstrap <hr> more */
-}
-
-
-/* Thin out the marketing headings */
-
-.featurette-heading {
+#logged-in-nav .navbar-right li {
     font-weight: 300;
-    line-height: 1;
-    letter-spacing: -.05rem;
+    width: auto;
+}
+
+#logged-in-nav .navbar-right li:last-of-type {
+    width: auto;
+}
+
+#logged-in-nav .navbar-right li:hover {
+    background-color: var(--gray);
+    transition: all 400ms ease-in-out;
+}
+
+#logged-in-nav .navbar-right li a {
+    text-decoration: none;
 }

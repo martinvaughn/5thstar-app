@@ -587,3 +587,7 @@ table.dataTable tbody .odd {
     margin-top: 0.5em;
   }
 }
+
+.dataTables_wrapper .dataTables_length {
+  margin-bottom: 10px;
+}

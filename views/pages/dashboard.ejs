@@ -1,5 +1,4 @@
 <%- include('../includes/loggedHeadNav.ejs') %>
-<!-- <script src="https://code.jquery.com/jquery-1.12.4.js" integrity="sha256-Qw82+bXyGq6MydymqBxNPYTaUXXq7c8v3CwiYwLLNXU=" crossorigin="anonymous"></script> -->
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.css">
 <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.js"></script>
 <link rel="stylesheet" href="stylesheets/table.css">
@@ -10,11 +9,11 @@
         <div class="accordion">
             <button type="button" class="accordion__button"><h1>Upload Customers</h1></button>
             <div class="accordion__content">
-                <div>
+                <div class="upload-wrapper">
                     <input id="chartFile" type="file" name="chartFile" accept=".csv"/>
                     <input id= "token" type="hidden" name="_csrf" value="<%= csrfToken %>"/>
                     <button id="chart-upload">Upload</button>
-                    <p id="success-p" style="display: none;">SUCCESS!!!!!! uWu xD</p>
+                    <p id="success-p" style="display: none;">&check; Uploaded successfully</p>
                     <div id="loader"></div>
                 </div>
                 
