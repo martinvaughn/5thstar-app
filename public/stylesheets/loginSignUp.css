@@ -26,11 +26,9 @@
 .container {
     display: flex;
     justify-content: center;
-    /* margin-top: 10rem;
-    margin-bottom: 5rem; */
     width: 100%;
     background-color: var(--gray);
-    padding-top: 10rem;
+    padding-top: 9rem;
     padding-bottom: 5rem;
 }
 
@@ -101,7 +99,7 @@
 
 input {
     font-size: 1em;
-    font-weight: 700;
+    font-weight: 400;
     outline: 0;
     padding-left: 10px;
     width: 100%;
@@ -116,10 +114,12 @@ input:focus {
     border-color: var(--yellow);
     background: var(--yellow);
     color: var(--dark-gray);
+    font-weight: 400;
 }
 
 label {
     width: 100%;
+    margin-bottom: 3px;
     font-weight: 400;
     text-transform: uppercase;
     letter-spacing: 1px;
@@ -345,18 +345,19 @@ p.submit {
 }
 
 .signup-protection {
+    color: var(--purple);
     font-size: 46px;
     text-align: center;
-    margin-bottom: 4rem;
-    z-index: 5;
+    margin-bottom: 2rem;
+    z-index: 500;
 }
 
 .signup-protection-2 {
-    color: var(--purple);
+    color: var(--green);
     font-size: 46px;
+    z-index: 2;
     position: absolute;
     left: 1px;
-    z-index: 4;
 }
 
 .signup-protection-3 {
@@ -364,6 +365,7 @@ p.submit {
     font-size: 46px;
     position: absolute;
     left: 2px;
+    z-index: 1;
 }
 
 #signup-password {

@@ -51,7 +51,7 @@
 
 .footer-bottom {
     background-color: var(--gray);
-    height: 10rem;
+    height: 5rem;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -60,11 +60,11 @@
 footer h2 {
     background-color: var(--dark-gray);
     color: var(--white);
-    margin: 0;
-    padding: 2rem;
     border-radius: 5px;
     font-size: 25px;
-    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 95%;
     height: 70%;
 }
@@ -75,36 +75,4 @@ footer h2 {
 
 #footer {
     margin-bottom: -200px;
-}
-
-
-/*Responsive******************/
-
-@media screen and (max-width: 630px) {
-    .top-footer {
-        display: flex;
-        flex-direction: column;
-        margin-bottom: 230px;
-    }
-
-    #footer-links {
-        display: flex;
-        margin-left: 25%;
-        margin-right: 25%;
-    }
-    #footer-links li {
-        margin-left: 20px;
-    }
-}
-
-@media screen and (max-width: 470px)
-/*Galaxies Mobiles*/
-
-{
-    .top-footer {
-        display: flex;
-        flex-direction: column;
-        margin-bottom: 230px;
-        margin-right: 100px;
-    }
 }
