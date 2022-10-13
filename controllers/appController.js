@@ -240,10 +240,10 @@ exports.getBusinessDashboard = async (req, res, next) => {
         login: false,
         singUp: false,
         userId: 69420,
-        businessName: "Kurt Cobain's Magazines",
-        reviewLink: "www.poop.com",
-        websiteLink: "https://cutedudes.com/",
-        businessEmail: "colerocksatwii@yahoo.com",
+        businessName: req.user.businessName,
+        reviewLink: req.user.reviewLink,
+        websiteLink: req.user.websiteLink,
+        businessEmail: req.user.businessEmail,
         scores: {
             negative: metrics.negative,
             neutral: metrics.neutral,
@@ -255,20 +255,7 @@ exports.getBusinessDashboard = async (req, res, next) => {
             opened: metrics.opens,
             clicked: metrics.clicks,
         },
-        uploads: req.user.uploads || [], // [
-        //     {
-        //         purchases: 1000,
-        //         fileName: "hehehe u r cute",
-        //         status: "zent",
-        //         dateUploaded: "10/9/1999"
-        //     },
-        //     {
-        //         purchases: 5,
-        //         fileName: "upload #2",
-        //         status: "zent",
-        //         dateUploaded: "10/9/1999"
-        //     }
-        // ],
+        uploads: req.user.uploads || [],
         jobSavedNumber: ((countingJobsTop))
     })
 }

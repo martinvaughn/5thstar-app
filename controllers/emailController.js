@@ -70,11 +70,12 @@ exports.sendEmailsToCustomers = async (req, res, next) => {
         const message = "Thank you for shopping with us. Can you spare a wee little review?";
 
 
-        if (customers && subjectLine && message) {
-            // await sendEmailsToCustomersAsync(req, customers, subjectLine, message).catch((error) => {
+        if (customers) {
+            const customerJSON = JSON.parse(customers)
+            // await sendEmailsToCustomersAsync(req, customerJSON, subjectLine, message).catch((error) => {
             //     throw new Error(`Error sending emails async: ${error}`)
             // });
-            req.user.uploads.push({ purchases: customers.length, fileName: fileName, status: "Delivered" })
+            req.user.uploads.push({ purchases: customerJSON.length, fileName: fileName, status: "Delivered" })
             req.user.save();
             res.setHeader("Content-Type", "text/html");
             res.status(200).send("Emails Sent.");

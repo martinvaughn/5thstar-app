@@ -44,6 +44,14 @@ const userSchema = new Schema({
 
         }
     ],
+    customerFeedback: [
+        {
+            customerEmail: { type: String, required: true },
+            dateResponded: { type: Date, required: true },
+            feedbackText: { type: String, required: false },
+            feedbackStars: { type: Number, required: false }
+        }
+    ],
 
 
     Savedjobs: [String]

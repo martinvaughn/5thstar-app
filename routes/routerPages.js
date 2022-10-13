@@ -7,6 +7,7 @@ const router = express.Router();
 //Get the controllers
 const pageController = require("../controllers/appController");
 const emailController = require("../controllers/emailController");
+const customerController = require("../controllers/customerController");
 
 //Require the Authentication Meddleware
 const auth = require('../middleware/is-auth');
@@ -36,9 +37,23 @@ router.get('/dashboard', auth, pageController.getBusinessDashboard)
 
 
 /***************************************
- * Email Routes for the Page
+ * Email Routes
  ***************************************/
 
 router.post('/dashboard', auth, emailController.sendEmailsToCustomers)
+
+/***************************************
+ * Customer Routes
+ ***************************************/
+
+// GET customer feedback
+router.get('/customer-feedback', auth, customerController.getCustomerFeedback)
+
+// // GET the page for a customer to review a business.
+router.get('/review', customerController.getReviewPage)
+
+// // POST the request sent when a user sends feedback
+// router.post('/review', auth, customerController.postFeedback)
+
 
 module.exports = router;
