@@ -1,33 +1,45 @@
 <%- include('../includes/head.ejs') %>
     <link rel="stylesheet" href="stylesheets/loginSignUp.css">
+    
     </head>
 
     <body>
         <%- include('../includes/navbasic.ejs') %>
             <main>
-                <div class='loginContainer'>
-                    <div class="container-2">
-                        <div class='container-form'>
-                            <form class="form-signin" method="POST" action="/login" novalidate>
-                                <img class="mb-4" src="images/homepage/mainlogo.png" alt="logo" width="270">
-                                <h3 class="h3 mb-3 font-weight-normal">Please Login</h3>
-                                <label for="email" class="sr-only">Email address</label>
-                                <input type="email" name="email" id="email" class="form-control" placeholder="Email address" value="<%= oldInput.email %>" required autofocus>
-                                <br>
-                                <label for="password" class="sr-only">Password</label>
-                                <input type="password" name="password" class="form-control" placeholder="Password" value="<%= oldInput.password %>" required autofocus>
+                <div class='container'>
+                    <div class="container-login">
+                        <div class='form-container-login form-container'>
+                            <form class="login-form form" method="POST" action="/login" novalidate>                                
+                                <div class="header">
+                                    <div class="green"></div>
+                                    <div class="yellow"></div>
+                                    <div class="blue"></div>
+                                    <h1>Login!</h1>
+                                </div>
+                                <label for="email" >Email address</label>
+                                <p>
+                                    <input type="email" name="email" id="email" class="form-control"  value="<%= oldInput.email %>" required autofocus>
+                                </p>
+                                <label for="password" >Password</label>
+                                <p>
+                                    <input type="password" name="password" class="form-control"  value="<%= oldInput.password %>" required autofocus>
+                                </p>
                                 <% if (errorMessage) { %>
                                     <div class="erroMessage">
                                         <%= errorMessage %>
                                     </div>
                                     <% } %>
-                                        <br>
                                         <input type="hidden" name="_csrf" value="<%= csrfToken %>">
-                                        <button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
-                                        <p class="mt-5 mb-3 text-muted">&copy; 2021</p>
+                                        <br>
+                                        <p>
+                                            <input type="submit" value="Login">
+                                        </p>
+                                        <!-- <button type="submit">Login</button> -->
+                                        <!-- <p class="mt-5 mb-3 text-muted">&copy; 2021</p> -->
                             </form>
                         </div>
                     </div>
                 </div>
+                <script src="scripts/loginSignupScripts.js"></script>
             </main>
             <%- include('../includes/foot.ejs') %>

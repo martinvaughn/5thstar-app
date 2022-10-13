@@ -1,12 +1,14 @@
 <%- include('../includes/head.ejs') %>
     <link rel="stylesheet" href="stylesheets/loginSignUp.css">
+    
+    
     </head>
 
     <body>
         <%- include('../includes/navbasic.ejs') %>
             <main>
                 <div class='container'>
-                    <div class='container-1'>
+                    <!-- <div class='container-1'>
                         <div class="text-container">
                             <h1>Find That Job Today!</h1>
                             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero iste maxime, officiis, quo similique, atque ea libero consequatur placeat pariatur reprehenderit? Culpa distinctio illum asperiores accusantium nisi commodi molestias
@@ -14,33 +16,73 @@
                             </p>
                         </div>
 
-                    </div>
-                    <div class="container-2">
-                        <div class='container-form'>
-                            <form class="form-signin" action="/signup" method="POST" novalidate>
-                                <img class="mb-4" src="images/homepage/mainlogo.png" alt="logo" width="270">
-                                <h3 class="h3 mb-3 font-weight-normal">Sign Up</h3>
-                                <label for="inputEmail" class="sr-only">Email address</label>
-                                <input type="email" name="email" id="email" class="form-control" placeholder="Email address" value="<%= oldInput.email %>" required autofocus>
-                                <label for="inputPassword" class="sr-only">Password</label>
-                                <br>
-                                <input type="password" name="password" class="form-control" placeholder="Password" value="<%= oldInput.password %>" required autofocus>
-                                <br>
-                                <input type="password" name="confirmPassword" class="form-control" placeholder="Confirm Password" <%=oldInput.confirmPassword %> required autofocus>
+                    </div> -->
+                    <!-- <input type="password" id="pw-id"> -->
+                    <div class="container-signup" id="container-signup">
+                        <div class='form-container-signup form-container' id="form-container-signup">
+                            <form class="signup-form form" id="signup-formy" action="/signup" method="POST" novalidate>
+                                <div class="header">
+                                    <div class="green"></div>
+                                    <div class="yellow"></div>
+                                    <div class="blue"></div>
+                                    <h1>Sign Up!</h1>
+                                </div>
+                                <label for="inputEmail">Email address</label>
+                                <p>
+                                    <input type="email" name="email" id="email" class="form-control" value="<%= oldInput.email %>" required autofocus>
+                                </p>
+                                <label for="business-name">Business Name</label>
+                                <p>
+                                    <input type="text" id="business-name" name="business-name" class="form-control" required autofocus>
+                                </p>
+                                <label for="business-email-name">Alias Email</label>
+                                <p>
+                                    <input type="text" id="business-email-name" name="business-email-name" class="form-control" required autofocus>
+                                </p>
+                                <label for="review-link">Review Link</label>
+                                <p>
+                                    <input type="text" id="review-link" name="review-link" class="form-control" required autofocus>
+                                </p>
+                                <label for="website-link">Website Link</label>
+                                <p>
+                                    <input type="text" id="website-link" name="website-link" class="form-control" required autofocus>
+                                </p>
+                                <label for="inputPassword">Password</label>
+                                <p>
+                                    <input type="password" id="password" name="password" class="form-control"  value="<%= oldInput.password %>" required autofocus>
+                                </p>
+                                <label for="confirmPassword">Confirm Password</label>
+                                <p>
+                                    <input type="password" id="confirm-password" name="confirmPassword" class="form-control"  <%=oldInput.confirmPassword %> required autofocus>
+                                </p>
 
                                 <% if (errorMessage) { %>
                                     <div class="erroMessage">
                                         <%= errorMessage %>
                                     </div>
-                                    <% } %>
-                                        <br>
-                                        <input type="hidden" name="_csrf" value="<%= csrfToken %>">
-                                        <button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
-
-                                        <p class="mt-5 mb-3 text-muted">&copy; 2021</p>
+                                <% } %>
+                                <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                                <br>
+                                <p><input type="submit" value="Sign up"></p>
+                                        <!-- <button class="btn btn-lg btn-primary btn-block" type="submit">Login</button> -->
+                                        <!-- <p class="mt-5 mb-3 text-muted">&copy; 2021</p> -->
                             </form>
+
+                            <div class="signup-protection-container" id="protection-container">
+                                <div class="lock-glyph-container">
+                                    <span class="glyphicon glyphicon-lock signup-protection"></span>
+                                    <span class="glyphicon glyphicon-lock signup-protection-2"></span>
+                                    <span class="glyphicon glyphicon-lock signup-protection-3"></span>
+                                </div>
+                                <br>
+                                <p>
+                                    <input type="password" id="signup-password" class="form-control">
+                                </p>
+                                <script src="scripts/signupScripts.js"></script>
+                            </div>
                         </div>
                     </div>
                 </div>
+                <script src="scripts/loginSignupScripts.js"></script>
             </main>
             <%- include('../includes/foot.ejs') %>

@@ -18,15 +18,13 @@ $(function() {
     function uploadDealcsv () {}; 
 
     /*------ Method for read uploded csv file ------*/
-        uploadDealcsv.prototype.getCsv = function(e) {
-        
-            let input = document.getElementById('chartFile');
-            input.addEventListener('change', function() {
+    uploadDealcsv.prototype.getCsv = function(e) {
+        let input = document.getElementById('chartFile');
+        input.addEventListener('change', function() {
 
             if (this.files && this.files[0]) {
-
                 var myFile = this.files[0];
-                // console.log(this.files[0].name)
+                console.log(this.files[0].name)
                 fileName = this.files[0].name;
                 var reader = new FileReader();
                 
@@ -44,8 +42,6 @@ $(function() {
     /*------- Method for parse csv data and display --------------*/
     uploadDealcsv.prototype.getParsecsvdata = function(data) {
 
-        // let parsedata = [];
-
         let newLinebrk = data.split("\n");
         for(let i = 0; i < newLinebrk.length; i++) {
 
@@ -61,8 +57,12 @@ $(function() {
     
     
     //SENT A POST METHODO TO THE SERVER ON CLICK
-    $("#chartUpload").click(function() {
-        
+    $("#chart-upload").click(function() {
+        const loader = document.getElementById('loader');
+        const uploadButton = document.getElementById("chart-upload");
+        const successMsg = document.getElementById("success-p");
+        loader.style.display = "block";
+        uploadButton.style.display = "none";
         parseData.shift();
         const customers = parseData.map(row => {
             return {
@@ -71,7 +71,6 @@ $(function() {
                 datePurchase: row[2] 
             }
         })
-        //Get the JobID
         console.log(customers, "CUSTIGNIADNUENFUNBQEIOU")
         var values = {
                 customers: customers,
@@ -86,18 +85,18 @@ $(function() {
                 fileName: fileName,
                 _csrf: $("#token").val()
             },
+            success: function() {
+                console.log("SHUCKS")
+                loader.style.display = "none";
+                uploadButton.style.display = "block";
+                successMsg.style.display = "block";
+            },
             error: function() {
                 console.log("Fail to sent data - POST AJAX /DASHBOARD ");
             }
-        });
-
-        // setTimeout(function() {
-        //     //Update the had so it can count the jobs saved!
-        //     $.get('/updatedNavCount', function(data) {
-        //         $('#logged-in-nav').html(data);
-        //     })
-        // }, 500)
-
+        })
     });
 })
+
+
 

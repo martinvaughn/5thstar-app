@@ -1,20 +1,27 @@
-#logged-in-nav {
-    background-color: #ffffff;
-    border-color: #ffffff;
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600;700&display=swap');
+
+:root {
+    --green: #00C29A;
+    --yellow: #F8FD99;
+    --purple: #C89AFE;
+    --blue: #50A2FF;
+    --dark-gray: #131417;
+    --gray: #1b1f24;
+    --white: #e9eaea;
 }
 
 #logged-in-nav .navbar-toggle {
-    background-color: black;
+    background-color: var(--gray);
 }
 
 .navbar-toggle .icon-bar {
-    background-color: #ffffff;
+    background-color: var(--white);
 }
 
 #logged-in-nav a {
     font-size: 16px;
     font-weight: bold;
-    color: #000000;
+    color: var(--white);
 }
 
 .navbar-nav li:hover {
@@ -22,7 +29,7 @@
 }
 
 #logged-in-nav .nav-a:hover {
-    color: #AA2626;
+    color: var(--green);
     margin-top: -2px;
 }
 
@@ -31,21 +38,13 @@
 }
 
 .glyphicon {
-    color: #AA2626;
+    color: var(--green);
+    font-size: 20px;
+    top: 0;
 }
 
-.navbar-left {
-    margin-top: 9.5px;
-}
-
-#savedNumber {
-    background-color: #E3E3E5;
-    margin-left: 3px;
-    height: 5px;
-    width: 5px;
-    border-radius: 50%;
-    padding: 0.2em;
-    color: #AA2626;
+.glyphicon-log-in {
+    left: -2px;
 }
 
 /* COLE'S STYLING */
@@ -63,6 +62,188 @@
     align-items: center;
 }
 
+.navbar-left {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.navbar-right {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .app-name {
-    margin-right: 3rem;
+    margin: 0;
+    padding: 10px;
+    border-radius: 15px;
+    font-size: 30px;
+    font-weight: 300;
+}
+
+/****************************************
+Home Page Style
+*****************************************/
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600;700&display=swap');
+
+:root {
+    --green: #00C29A;
+    --yellow: #F8FD99;
+    --purple: #C89AFE;
+    --blue: #50A2FF;
+    --dark-gray: #131417;
+    --gray: #1b1f24;
+    --white: #e9eaea;
+}
+
+.navbar {
+    background-color: var(--dark-gray);
+    border: none;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.navbar-right li {
+    transition: all 300ms;
+}
+
+.navbar-right li:hover {
+    background-color: var(--gray);
+    border-radius: 15px;
+}
+
+.main-log {
+    margin-left: 200px;
+    height: 40px;
+    margin-top: 7px;
+}
+
+.partition { 
+    font-size: 26px;
+}
+
+.glyphicon-user,
+.glyphicon,
+.glyphicon-home {
+    color: var(--green);
+}
+
+.navbar .sing-incons {
+    font-weight: bolder;
+    display: flex;
+    justify-content: space-between;
+}
+
+.sing-incons div {
+    margin-left: 18px;
+    color: var(--white);
+    font-weight: 300;
+    font-size: 18px;
+}
+
+.sing-incons div:hover {
+    text-decoration: underline;
+}
+
+
+.jumbotron {
+    background-image: url(/images/homepage/home-home-office-background.jpeg);
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    color: #000000;
+    height: auto;
+    width: 100%;
+    margin-top: 50px;
+    margin-bottom: 75px;
+    padding-top: 150px;
+    padding-bottom: 100px;
+}
+
+.rounded-circle {
+    border-radius: 50%;
+}
+
+.featurette img {
+    width: 320px;
+}
+
+
+/***************************
+Styles from boostrap
+***************************/
+
+/* CUSTOMIZE THE CAROUSEL
+  -------------------------------------------------- */
+
+
+/* Carousel base class */
+
+.carousel {
+    margin-bottom: 4rem;
+}
+
+
+/* Since positioning the image, we need to help out the caption */
+
+.carousel-caption {
+    bottom: 3rem;
+    z-index: 10;
+}
+
+
+/* Declare heights because of positioning of img element */
+
+.carousel-item {
+    height: 32rem;
+}
+
+.carousel-item>img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    min-width: 100%;
+    height: 32rem;
+}
+
+
+/* MARKETING CONTENT
+  -------------------------------------------------- */
+
+
+/* Center align the text within the three columns below the carousel */
+
+.marketing .col-lg-4 {
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.marketing h2 {
+    font-weight: 400;
+}
+
+.marketing .col-lg-4 p {
+    margin-right: .75rem;
+    margin-left: .75rem;
+}
+
+
+/* Featurettes
+  ------------------------- */
+
+.featurette-divider {
+    margin: 5rem 0;
+    /* Space out the Bootstrap <hr> more */
+}
+
+
+/* Thin out the marketing headings */
+
+.featurette-heading {
+    font-weight: 300;
+    line-height: 1;
+    letter-spacing: -.05rem;
 }

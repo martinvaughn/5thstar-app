@@ -23,7 +23,6 @@ main {
     font-weight: bold;
     font-size: 11px;
     color: black;
-    font-family: 'Roboto', sans-serif;
 }
 
 .nav-icon-job:hover {
@@ -43,7 +42,6 @@ main {
 
 .job-basic-info h4,
 .job-basic-info h3 {
-    font-family: 'Open Sans', sans-serif;
     font-size: 15px;
 }
 
@@ -91,14 +89,12 @@ main {
 }
 
 #jobTitle {
-    font-family: 'Roboto', sans-serif;
     font-weight: bold;
     font-size: 30px;
 }
 
 .company-details {
     font-size: 20px;
-    font-family: 'Nunito', sans-serif;
 }
 
 .company-details .icon-info {
@@ -127,13 +123,12 @@ hr {
     padding-top: 20px;
     padding-bottom: 200px;
     color: #757575;
-    font-family: 'Roboto Condensed', sans-serif;
 }
 
 
 /*RESPONSIVENESS*/
 
-@media screen and (max-width: 850px) {
+/* @media screen and (max-width: 850px) {
     #board-container {
         display: block;
     }
@@ -157,4 +152,4 @@ hr {
     .job-basic-info h3 {
         padding-left: 1em;
     }
-}
+} */

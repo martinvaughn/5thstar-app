@@ -63,11 +63,13 @@ exports.getSignUp = (req, res, next) => {
         login: false,
         singUp: true,
         board: false,
+        password: 123,
         errorMessage: message,
         oldInput: {
             email: '',
             password: '',
             confirmPassword: ''
+
         },
         validationErrors: []
     });
@@ -82,11 +84,10 @@ exports.postSignUp = (req, res, next) => {
     const email = req.body.email;
     const password = req.body.password;
     // HardCoded Attributes...
-    const businessName = "Thanks App";
-    const reviewLink = "www.google.com";
-    const websiteLink = "www.thanks.rip";
-    const businessEmail = "martin@bloom-mktg.com";
-    const businessEmailName = "billsbikeandrun";
+    const businessName = req.body.businessName;
+    const reviewLink = req.body.reviewLink;
+    const websiteLink = req.body.websiteLink;
+    const businessEmailName = req.body.businessEmailName;
 
     //Check for errors set in the router
     const errors = validationResult(req);
@@ -116,7 +117,6 @@ exports.postSignUp = (req, res, next) => {
                 email: email,
                 password: hashedPassword,
                 businessName: businessName,
-                businessEmail: businessEmail,
                 businessEmailName: businessEmailName,
                 reviewLink: reviewLink,
                 websiteLink: websiteLink,

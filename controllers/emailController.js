@@ -55,10 +55,10 @@ const sendEmailsToCustomersAsync = async (
 
 
 exports.sendEmailsToCustomers = async (req, res, next) => {
+    console.log("customrs & filename");
     try {
         const customers2 = req.body.customers;
         const fileName2 = req.body.fileName;
-        console.log("customrs & filena", customers2, fileName2);
 
         const fileName = "fileName.js";
         const customers = [
@@ -71,9 +71,9 @@ exports.sendEmailsToCustomers = async (req, res, next) => {
 
 
         if (customers && subjectLine && message) {
-            await sendEmailsToCustomersAsync(req, customers, subjectLine, message).catch((error) => {
-                throw new Error(`Error sending emails async: ${error}`)
-            });
+            // await sendEmailsToCustomersAsync(req, customers, subjectLine, message).catch((error) => {
+            //     throw new Error(`Error sending emails async: ${error}`)
+            // });
             req.user.uploads.push({ purchases: customers.length, fileName: fileName, status: "Delivered" })
             req.user.save();
             res.setHeader("Content-Type", "text/html");

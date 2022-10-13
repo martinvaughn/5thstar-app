@@ -31,10 +31,6 @@ const userSchema = new Schema({
         type: String,
         required: false
     },
-    businessEmail: {
-        type: String,
-        required: false
-    },
     businessEmailName: {
         type: String,
         required: false
