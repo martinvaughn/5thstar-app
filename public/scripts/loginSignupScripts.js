@@ -1,7 +1,8 @@
 /*global console, alert, confirm, prompt*/
 var forms = document.forms;
 p = document.querySelectorAll('p'),
-input = document.querySelectorAll('input:not([type="submit"])'),
+// input = document.querySelectorAll('input:not([type="submit"])'),
+input = document.querySelectorAll('.form-control'),
 submit = document.querySelectorAll('input[type="submit"]');
 password = input[2],
 password2 = document.getElementById('passwordIn'),
