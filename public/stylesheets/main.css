@@ -10,6 +10,14 @@
     --white: #e9eaea;
 }
 
+*,
+*:before,
+*:after {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
 body {
     background-color: var(--gray);
     color: var(--white);
@@ -30,8 +38,3 @@ body {
     align-items: center;
 }
 
-#footer {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-}

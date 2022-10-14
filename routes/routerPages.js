@@ -47,7 +47,7 @@ router.post('/dashboard', auth, emailController.sendEmailsToCustomers)
  ***************************************/
 
 // GET customer feedback
-router.get('/customer-feedback', auth, customerController.getCustomerFeedback)
+router.get('/feedback', auth, customerController.getCustomerFeedback)
 
 // // GET the page for a customer to review a business.
 router.get('/review', customerController.getReviewPage)
