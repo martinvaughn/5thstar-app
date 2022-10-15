@@ -10,6 +10,7 @@
     </script>
     <input type="hidden" id="table-data" name="array[]" value="<%= customerFeedbackRows %>" />
     <div class="feedback-page">
+        <h1 class="feedback-page-title">View Customer Feedback</h1>
         <table class="class-feedback-table" id="feedback-table">
             <thead>
                 <tr id="feedback-table-row">
@@ -17,14 +18,14 @@
                     <th>Email</th>
                     <th>Stars</th>
                     <th>Feedback</th>
-                    <th>Date Reviewed</th>
+                    <th>Date</th>
                 </tr>    
             </thead>
             <tbody id="feedback-table-body">
                 <% customerFeedbackRows.forEach(feedback => { %>
                 <tr>
                     <td></td>
-                    <td><%= feedback.email %></td>
+                    <td><a href="mailto:someone@yoursite.com"><%= feedback.email %></a></td>
                     <td><%= feedback.feedbackStars %></td>
                     <td><%= feedback.feedbackText %></td>
                     <td><%= feedback.dateResponded %></td>

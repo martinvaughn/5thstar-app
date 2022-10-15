@@ -591,3 +591,7 @@ table.dataTable tbody .odd {
 .dataTables_wrapper .dataTables_length {
   margin-bottom: 10px;
 }
+
+table.dataTable tbody tr {
+  height: 3rem;
+}

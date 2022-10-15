@@ -35,6 +35,8 @@ router.get('/updatedNavCount', auth, pageController.updatedNavCount)
 
 router.get('/dashboard', auth, pageController.getBusinessDashboard)
 
+router.get('/settings', auth, pageController.getSettings)
+
 
 /***************************************
  * Email Routes

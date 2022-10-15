@@ -11,7 +11,7 @@
     --red: #ff6961;
 }
 
-.feedback-page {
+.settings-page {
     margin-top: 10rem;
     margin-bottom: 7rem;
     background-color: var(--dark-gray);
@@ -20,16 +20,17 @@
     width: 80%;
 }
 
-.feedback-page-title {
+.settings-page h1 {
     font-size: 45px;
     font-weight: 400;
     margin-bottom: 4rem;
 }
 
-#feedback-table-body a {
-    color: var(--green);
+.settings-page li {
+    font-size: 27px;
+    line-height: 3rem;
 }
 
-#feedback-table-body a:hover {
-    opacity: 0.6;
+.settings-page span {
+    color: var(--green);
 }

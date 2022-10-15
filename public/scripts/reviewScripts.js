@@ -21,7 +21,6 @@ const starClick = function(num) {
         star3.style.color = "#DEDEDE";
         star4.style.color = "#DEDEDE";
         star5.style.color = "#DEDEDE";
-        console.log(negativeAccordionContent.scrollHeight + 2 + "px")
         lastClicked = 1;
     } else if (num === 2) {
         negativeAccordion.style.display = "block";
@@ -49,7 +48,7 @@ const starClick = function(num) {
         negativeAccordion.style.display = "none";
         positiveAccordion.style.display = "block";
         negativeAccordionContent.style.maxHeight = 0;
-        positiveAccordionContent.style.maxHeight = positiveAccordionContent.scrollHeight + 2 + "px";
+        positiveAccordionContent.style.maxHeight = positiveAccordionContent.scrollHeight + 20 + "px";
         star1.style.color = "#f7c02a";
         star2.style.color = "#f7c02a";
         star3.style.color = "#f7c02a";
@@ -60,7 +59,7 @@ const starClick = function(num) {
         negativeAccordion.style.display = "none";
         positiveAccordion.style.display = "block";
         negativeAccordionContent.style.maxHeight = 0;
-        positiveAccordionContent.style.maxHeight = positiveAccordionContent.scrollHeight + 2 + "px";
+        positiveAccordionContent.style.maxHeight = positiveAccordionContent.scrollHeight + 20 + "px";
         star1.style.color = "#f7c02a";
         star2.style.color = "#f7c02a";
         star3.style.color = "#f7c02a";

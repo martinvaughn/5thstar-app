@@ -49,7 +49,8 @@
             </div>
             <div class="opened box">
                 <div class="text">
-                    <h1>Opened &nbsp;<%= analytics.opened %></h1>
+                    <h1>Opened &nbsp;<%= (analytics.opened / analytics.sent) * 100 %>%</h1>
+                    <span>Total Opened: <%= analytics.opened %></span>
                 </div>
                 <!-- <div class="score">
                     <h2></h2>
@@ -57,7 +58,8 @@
             </div>
             <div class="clicked box">
                 <div class="text">
-                    <h1>Clicked &nbsp;&nbsp;<%= analytics.clicked %></h1>
+                    <h1>Clicked &nbsp;&nbsp;<%= (analytics.clicked / analytics.sent) * 100 %>%</h1>
+                    <span>Total Clicked: <%= analytics.clicked %></span>
                 </div>
                 <!-- <div class="score">
                     <h2></h2>

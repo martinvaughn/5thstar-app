@@ -161,6 +161,39 @@ a:hover {
     transition: max-height 0.3s;
     padding: 0 15px;
     background: var(--dark-gray);
+    text-align: center;
+}
+
+.positive-accordion__content h1 {
+    font-size: 24px;
+    margin-bottom: 0;
+}
+
+.positive-accordion p {
+    color: rgb(196, 196, 196);
+    font-style: italic;
+    margin-bottom: 3rem;
+    font-size: 18px;
+}
+
+.positive-accordion__content button {
+    margin-top: 1rem;
+    width: 11rem;
+    height: 3rem;
+    background-color: var(--green);
+    color: var(--white);
+    border: none;
+    border-radius: 5px;
+    font-size: 26px;
+    font-weight: 500;
+    font-family: "Montserrat", sans-serif;
+    cursor: pointer;
+    margin-bottom: 20px;
+    transition: all 300ms ease-in-out;
+}
+
+.positive-accordion__content button:hover {
+    transform: scale(1.05);
 }
 
 

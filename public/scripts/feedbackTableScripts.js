@@ -63,6 +63,17 @@
 // });
 
 $(document).ready( function () {
-    $('#feedback-table').DataTable();
+    $('#feedback-table').DataTable({
+        "columns": [
+            null,
+            null,
+            null,
+            null,
+            {"width": "75px"}
+        ],
+        "language": {
+            "emptyTable": "No Customer Feedback Yet"
+        }
+    });
 } );
 
