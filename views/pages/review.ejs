@@ -3,30 +3,29 @@
     <link rel="stylesheet" href="stylesheets/main.css">
     <link rel="stylesheet" href="stylesheets/review.css">
     
-    <div class="review-body">
-        <p>This is the review page</p>
-        <h2>How would you rate your experience with <%= businessName %>?</h2>
-<!-- NiceReply -->
+    <div class="review-page-body">
+        <h1>How would you rate your experience with <%= businessName %>?</h1>
         <table width="320" border="0" align="center" cellpadding="20" cellspacing="0" style="text-align: center;">
             <tr>
                 <td>
                     <div class="rating"> 
-                        <a href="#" id="star-5">★</a> 
-                        <a href="#" id="star-4">★</a> 
-                        <a href="#" id="star-3">★</a> 
-                        <a href="#" id="star-2">★</a> 
-                        <a href="#" id="star-1">★</a>
+                        <a id="star-5">★</a> 
+                        <a id="star-4">★</a> 
+                        <a id="star-3">★</a> 
+                        <a id="star-2">★</a> 
+                        <a id="star-1">★</a>
                     </div>
-                    <p><span class="subtext">(select 1-5 stars)</span></p>
                 </td>
             </tr>
         </table>
-        <div class="negative-accordion accordion"> 3 stars or less
+        <div class="negative-accordion accordion">
             <div class="negative-accordion__content">
-                <input type="textarea" placeholder="u r dum, i send bom">
+                <textarea class="feedback-textarea" rows="6" cols="40" placeholder="How can we improve?"></textarea>
+                <br>
+                <button class="feedback-submit" disabled>Submit</button>
             </div>
         </div>
-        <div class="positive-accordion accordion"> 4 or more stars
+        <div class="positive-accordion accordion">
             <div class="positive-accordion__content">
                 <h4>Glad to hear it!</h4>
                 <p>Would you be willing to leave a review on google?</p>
