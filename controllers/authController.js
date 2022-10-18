@@ -81,13 +81,15 @@ exports.getSignUp = (req, res, next) => {
 //This controller will handle the POST Sign Up Page
 exports.postSignUp = (req, res, next) => {
     //User Information
+    console.log("b4 noodles")
     const email = req.body.email;
     const password = req.body.password;
-    // HardCoded Attributes...
+    const phone = req.body.phone;
     const businessName = req.body.businessName;
     const reviewLink = req.body.reviewLink;
     const websiteLink = req.body.websiteLink;
     const businessEmailName = req.body.businessEmailName;
+    console.log("NOODLES");
 
     //Check for errors set in the router
     const errors = validationResult(req);
@@ -115,6 +117,7 @@ exports.postSignUp = (req, res, next) => {
         .then(hashedPassword => {
             const user = new User({
                 email: email,
+                phone: phone,
                 password: hashedPassword,
                 businessName: businessName,
                 businessEmailName: businessEmailName,

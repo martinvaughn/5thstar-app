@@ -35,6 +35,8 @@ router.get('/updatedNavCount', auth, pageController.updatedNavCount)
 
 router.get('/dashboard', auth, pageController.getBusinessDashboard)
 
+router.get('/settings', auth, pageController.getSettings)
+
 
 /***************************************
  * Email Routes
@@ -47,7 +49,7 @@ router.post('/dashboard', auth, emailController.sendEmailsToCustomers)
  ***************************************/
 
 // GET customer feedback
-router.get('/customer-feedback', auth, customerController.getCustomerFeedback)
+router.get('/feedback', auth, customerController.getCustomerFeedback)
 
 // // GET the page for a customer to review a business.
 router.get('/review', customerController.getReviewPage)

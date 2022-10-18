@@ -1,0 +1,200 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600;700&display=swap');
+
+:root {
+    --green: #00C29A;
+    /* --yellow: #F8FD99; */
+    --yellow: #f7c02a;
+    --purple: #C89AFE;
+    --blue: #50A2FF;
+    --dark-gray: #131417;
+    --gray: #1b1f24;
+    --white: #e9eaea;
+}
+
+.review-page-wrapper {
+    height: 100vh;
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    background-color: var(--gray);
+    font-family: "Montserrat", sans-serif;
+    background-image: linear-gradient(45deg, transparent 20%, black 25%, transparent 25%),
+                    linear-gradient(-45deg, transparent 20%, black 25%, transparent 25%),
+                    linear-gradient(-45deg, transparent 75%, black 80%, transparent 0),
+                    radial-gradient(gray 0px, transparent 0);
+    background-size: 30px 30px, 30px 30px;
+    color: var(--white);
+}
+
+.review-page-body {
+    background-color: var(--dark-gray);
+    padding: 3rem;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid var(--green);
+    box-shadow: 5px 10px var(--green);
+    width: 63rem;
+}
+
+h1 {
+    font-size: 42px;
+    line-height: 55px;
+    text-align: center;
+    font-weight: 400;
+    margin-bottom: 3.5rem;
+}
+
+/* STARS */
+
+/*
+	Ratings Stars
+	(with as little code as possible)
+	Based on Chris Coyier's code - http://css-tricks.com/star-ratings/
+*/
+.rating {
+	unicode-bidi: bidi-override;
+	direction: rtl;
+	text-align: center;
+	font-size: 36px;
+    cursor: pointer;
+    margin-bottom: 3.5rem;
+}
+
+.rating a {
+	text-decoration: none;
+    cursor: pointer;
+	color: #DEDEDE;
+}
+
+a:hover {
+	color: var(--yellow) !important;
+}
+
+.rating > a {
+	display: inline-block;
+	position: relative;
+	width: 1.1em;
+    font-size: 43px;
+}
+
+.rating > a:hover, .rating > a:hover ~ a {
+    color: transparent;
+}
+
+.rating > a:hover:before, .rating > a:hover ~ a:before {
+    content: "\2605";
+    position: absolute;
+    left: 1;
+    color: var(--yellow);
+}
+
+/* ACCORDIONS */
+
+.accordion {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.negative-accordion {
+    display: none;
+    /* transition: all 2000ms ease-in-out; */
+}
+
+.positive-accordion {
+    display: none;
+    /* transition: all 2000ms ease-in-out; */
+}
+
+.negative-accordion__content {
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height 0.3s;
+    padding: 0 15px;
+    background: var(--dark-gray);
+    text-align: center;
+}
+
+.feedback-textarea {
+    resize: none;
+    border: 1px solid var(--gray);
+    border-radius: 5px;
+    background-color: var(--gray);
+    color: rgb(221, 222, 224);
+    padding: 15px;
+    text-align: left;
+    font-family: "Montserrat", sans-serif;
+    font-size: 20px;
+    caret-color: var(--yellow);
+}
+
+.feedback-textarea:focus {
+    border: 1px solid var(--green);
+    outline: none;
+}
+
+.feedback-submit {
+    margin-top: 1rem;
+    width: 10rem;
+    height: 2.5rem;
+    background-color: var(--green);
+    color: var(--white);
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    font-family: "Montserrat", sans-serif;
+    cursor: pointer;
+}
+
+.feedback-submit:disabled {
+    opacity: 0.6;
+}
+
+.positive-accordion__content {
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height 0.3s;
+    padding: 0 15px;
+    background: var(--dark-gray);
+    text-align: center;
+}
+
+.positive-accordion__content h1 {
+    font-size: 24px;
+    margin-bottom: 0;
+}
+
+.positive-accordion p {
+    color: rgb(196, 196, 196);
+    font-style: italic;
+    margin-bottom: 3rem;
+    font-size: 18px;
+}
+
+.positive-accordion__content button {
+    margin-top: 1rem;
+    width: 11rem;
+    height: 3rem;
+    background-color: var(--green);
+    color: var(--white);
+    border: none;
+    border-radius: 5px;
+    font-size: 26px;
+    font-weight: 500;
+    font-family: "Montserrat", sans-serif;
+    cursor: pointer;
+    margin-bottom: 20px;
+    transition: all 300ms ease-in-out;
+}
+
+.positive-accordion__content button:hover {
+    transform: scale(1.05);
+}
+
+
+

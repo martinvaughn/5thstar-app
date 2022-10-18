@@ -1,1 +1,39 @@
-<p>This is the review page</p>
+<div class="review-page-wrapper">
+    <link rel="stylesheet" href="stylesheets/reset.css">
+    <link rel="stylesheet" href="stylesheets/main.css">
+    <link rel="stylesheet" href="stylesheets/review.css">
+    
+    <div class="review-page-body">
+        <h1>How would you rate your experience with <%= businessName %>?</h1>
+        <table width="320" border="0" align="center" cellpadding="20" cellspacing="0" style="text-align: center;">
+            <tr>
+                <td>
+                    <div class="rating"> 
+                        <a id="star-5">★</a> 
+                        <a id="star-4">★</a> 
+                        <a id="star-3">★</a> 
+                        <a id="star-2">★</a> 
+                        <a id="star-1">★</a>
+                    </div>
+                </td>
+            </tr>
+        </table>
+        <div class="negative-accordion accordion">
+            <div class="negative-accordion__content">
+                <textarea class="feedback-textarea" rows="6" cols="40" placeholder="How can we improve?"></textarea>
+                <br>
+                <button class="feedback-submit" disabled>Submit</button>
+            </div>
+        </div>
+        <div class="positive-accordion accordion">
+            <div class="positive-accordion__content">
+                <h1>Glad to hear it! Would you be willing to leave a review on google?</h1>
+                <p>This helps us continue providing the best experience for you and others </p>
+                <button>Yes 👍</button>
+                <br>
+            </div>
+        </div>
+
+    </div>
+    <script src="scripts/reviewScripts.js"></script>
+</div>

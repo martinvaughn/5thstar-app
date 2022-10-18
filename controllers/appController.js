@@ -235,15 +235,11 @@ exports.getBusinessDashboard = async (req, res, next) => {
     //TOP NAV UPDATE
     res.render('pages/dashboard', {
         board: true,
-        title: 'Dashboard | Thanks',
+        title: 'Dashboard | 5thstar',
         home: false,
         login: false,
         singUp: false,
-        userId: 69420,
         businessName: req.user.businessName,
-        reviewLink: req.user.reviewLink,
-        websiteLink: req.user.websiteLink,
-        businessEmail: req.user.businessEmail,
         scores: {
             negative: metrics.negative,
             neutral: metrics.neutral,
@@ -259,3 +255,19 @@ exports.getBusinessDashboard = async (req, res, next) => {
         jobSavedNumber: ((countingJobsTop))
     })
 }
+
+exports.getSettings = async (req, res, next) => {
+
+    res.render('pages/settings', {
+        title: 'Dashboard | 5thstar',
+        home: false,
+        login: false,
+        singUp: false,
+        email: req.user.email,
+        phone: req.user.phone || '4808255300',
+        businessName: req.user.businessName || "Cole's poop",
+        businessEmailName: req.user.businessEmailName,
+        reviewLink: req.user.reviewLink,
+        websiteLink: req.user.websiteLink,
+    });
+};

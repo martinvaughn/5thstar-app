@@ -78,6 +78,7 @@ exports.sendEmailsToCustomers = async (req, res, next) => {
             req.user.uploads.push({ purchases: customerJSON.length, fileName: fileName, status: "Delivered" })
             req.user.save();
             res.setHeader("Content-Type", "text/html");
+            console.log("POOPDIE")
             res.status(200).send("Emails Sent.");
         } else {
             throw new Error(`Email data is not complete.`);
