@@ -55,26 +55,26 @@ const sendEmailsToCustomersAsync = async (
 
 
 exports.sendEmailsToCustomers = async (req, res, next) => {
-    console.log("customrs & filename");
+    console.log("customers & filename");
     try {
-        const customers2 = req.body.customers;
-        const fileName2 = req.body.fileName;
+        const customers = req.body.customers;
+        const fileName = req.body.fileName;
 
-        const fileName = "fileName.js";
-        const customers = [
-            { name: "Cole MartinDale", email: "martinvaughn16@gmail.com", datePurchased: "10/20/2022" },
-            { name: "MarvIn Lawn", email: "martinvaughn.io@gmail.com", datePurchased: "10/20/2022" },
-            { name: "Johnny Goodseed", email: "contact@bloom-mktg.com", datePurchased: "10/20/2022" },
-        ]
+        // const fileName = "fileName.js";
+        // const customers = [
+        //     { name: "Cole MartinDale", email: "cole.martindale13@gmail.com", datePurchased: "10/20/2022" },
+        //     { name: "MarvIn Lawn", email: "martinvaughn.io@gmail.com", datePurchased: "10/20/2022" },
+        //     { name: "Johnny Goodseed", email: "contact@bloom-mktg.com", datePurchased: "10/20/2022" },
+        // ]
         const subjectLine = "Thanks!";
         const message = "Thank you for shopping with us. Can you spare a wee little review?";
 
 
         if (customers) {
             const customerJSON = JSON.parse(customers)
-            // await sendEmailsToCustomersAsync(req, customerJSON, subjectLine, message).catch((error) => {
-            //     throw new Error(`Error sending emails async: ${error}`)
-            // });
+            await sendEmailsToCustomersAsync(req, customerJSON, subjectLine, message).catch((error) => {
+                throw new Error(`Error sending emails async: ${error}`)
+            });
             req.user.uploads.push({ purchases: customerJSON.length, fileName: fileName, status: "Delivered" })
             req.user.save();
             res.setHeader("Content-Type", "text/html");
