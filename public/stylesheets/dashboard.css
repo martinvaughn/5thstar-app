@@ -18,8 +18,8 @@
     align-items: center;
     margin-top: 6rem;
     margin-bottom: 9rem;
-    min-width: 520px;
-    /* max-width: 780px; */
+    /* min-width: 700px; */
+    max-width: 1000px;
     width: 65%;
     letter-spacing: 1px;
 }
@@ -31,6 +31,7 @@
     border: 3px solid;
     padding: 1.1rem;
     border-radius: 10px;
+    height: 85px;
     background-color: var(--dark-gray);
     box-shadow: 5px 7px var(--white);
 }
@@ -53,6 +54,10 @@
     font-size: 32px;
     /* text-transform: uppercase; */
     font-weight: 400;
+}
+
+.sent h1 {
+    margin: 0;
 }
 
 .accordion {
@@ -152,6 +157,10 @@
     margin: 0;
 }
 
+.mobile {
+    display: none;
+}
+
 .analytics-container .box {
     width: 30%;
     display: flex;
@@ -242,3 +251,137 @@
 }
 
 /* MEDIA QUERIES */
+@media only screen and (max-width: 1400px) {
+    .analytics-container h1 {
+        font-size: 28px;
+    }
+
+    .analytics-container .box {
+        width: 32%;
+    }
+}
+
+/* DESKTOP */
+@media only screen and (max-width: 1200px) {
+    .dashboard {
+        width: 75%;
+    }
+
+    .analytics-container h1 {
+        font-size: 26px;
+    }
+
+    .analytics-container .box {
+        width: 32%;
+    }
+}
+
+/* LAPTOP */
+@media only screen and (max-width: 992px) {
+    .analytics-container h1 {
+        font-size: 22px;
+    }
+
+    .text span {
+        font-size: 14px;
+    }
+
+    .analytics-container .box {
+        padding: 1rem .75rem;
+    }
+
+    .dashboard {
+        width: 83%;
+    }
+}
+
+/* TABLET */
+@media only screen and (max-width: 768px) {
+    .dashboard {
+        width: 95%;
+    }
+
+    .laptop {
+        display: none;
+    }
+
+    .mobile {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .analytics-lower-wrapper {
+        display: flex;
+        justify-content: center;
+        margin-top: 1rem;
+        width: 100%;
+    }
+
+    .analytics-container h1 {
+        font-size: 26px;
+    }
+
+    .analytics-container .box {
+        padding: 1rem .4rem;
+        width: 50%;
+    }
+
+    .text span {
+        font-size: 16px;
+    }
+
+    .scores-container h1 {
+        font-size: 27px;
+    }
+
+    .accordion__button h1 {
+        font-size: 34px;
+    }
+
+    .sent {
+        width: 40%;
+    }
+    .opened {
+        margin-right: 1.3rem;
+    }
+}
+
+/* PHONE */
+@media only screen and (max-width: 525px) {
+    .box h1 {
+        font-size: 24px;
+    }
+
+    .score h2 {
+        font-size: 40px;
+    }
+
+    .scores-container .box {
+        padding: 1rem .9rem;
+        justify-content: space-between;
+    }
+}
+
+@media only screen and (max-width: 390px) {
+    .box h1 {
+        font-size: 20px;
+    }
+
+    .opened {
+        margin-right: 1rem;
+    }
+
+    .analytics-container {
+        padding: 5px;
+        margin: 2rem 1rem;
+    }
+
+    .score h2 {
+        font-size: 32px;
+    }
+
+    .text span {
+        font-size: 14px;
+    }
+}
