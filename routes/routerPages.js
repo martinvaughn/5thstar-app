@@ -55,7 +55,6 @@ router.get('/feedback', auth, customerController.getCustomerFeedback)
 router.get('/review', customerController.getReviewPage)
 
 // // POST the request sent when a user sends feedback
-// router.post('/review', auth, customerController.postFeedback)
-
+router.post('/review', customerController.postReviewPage)
 
 module.exports = router;

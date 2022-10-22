@@ -11,6 +11,10 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 //Instantiate the Schema
 const userSchema = new Schema({
+    businessId: {
+        type: String,
+        required: true
+    },
     email: {
         type: String,
         required: true
@@ -51,7 +55,7 @@ const userSchema = new Schema({
     customerFeedback: [
         {
             customerEmail: { type: String, required: true },
-            dateResponded: { type: Date, required: true },
+            dateResponded: { type: Date, default: Date.now() },
             feedbackText: { type: String, required: false },
             feedbackStars: { type: Number, required: false }
         }
