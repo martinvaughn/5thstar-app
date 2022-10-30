@@ -22,7 +22,7 @@ const transporter = nodemailer.createTransport({
 const User = require('../models/user');
 
 /*************************************************
- * GET LOGIN | SING UP
+ * GET LOGIN | SIGN UP
  * ***********************************************/
 //This controller will handle the GET Login Page
 exports.getLogin = (req, res, next) => {
@@ -33,7 +33,7 @@ exports.getLogin = (req, res, next) => {
         message = null;
     }
     res.render('auth/login', {
-        title: 'HOME OFFICE POST | Login',
+        title: '5thstar | Login',
         home: false,
         login: true,
         singUp: false,
@@ -58,7 +58,7 @@ exports.getSignUp = (req, res, next) => {
         message = null;
     }
     res.render('auth/signup', {
-        title: 'HOME OFFICE POST | Sign Up',
+        title: '5thstar | Sign Up',
         home: false,
         login: false,
         singUp: true,
@@ -95,7 +95,7 @@ exports.postSignUp = (req, res, next) => {
     if (!errors.isEmpty()) {
         console.log(errors.array());
         return res.status(422).render('auth/signup', {
-            title: 'HOME OFFICE POST | Sign Up',
+            title: '5thstar | Sign Up',
             home: false,
             login: false,
             singUp: true,
@@ -165,7 +165,7 @@ exports.postLogin = (req, res, next) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
         return res.status(422).render('auth/login', {
-            title: 'HOME OFFICE POST | Login',
+            title: '5thstar | Login',
             home: false,
             login: true,
             singUp: false,
@@ -184,7 +184,7 @@ exports.postLogin = (req, res, next) => {
             //If user is not found handle page back with error messages
             if (!user) {
                 return res.status(422).render('auth/login', {
-                    title: 'HOME OFFICE POST | Login',
+                    title: '5thstar | Login',
                     home: false,
                     login: true,
                     singUp: false,
@@ -206,12 +206,12 @@ exports.postLogin = (req, res, next) => {
                         req.session.user = user;
                         return req.session.save(err => {
                             console.log(err);
-                            res.redirect('/jobboard');
+                            res.redirect('/dashboard');
                         });
                     }
                     return res.status(422).render('auth/login', {
                         errorMessage: 'Invalid email or password.',
-                        title: 'HOME OFFICE POST | Login',
+                        title: '5thstar | Login',
                         home: false,
                         login: true,
                         singUp: false,
