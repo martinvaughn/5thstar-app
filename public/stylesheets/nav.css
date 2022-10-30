@@ -58,6 +58,15 @@
     align-items: center;
 }
 
+.navbar-left h4 {
+    padding: 10px;
+    margin: 0;
+    padding: 10px;
+    border-radius: 15px; 
+    font-size: 30px;
+    font-weight: 300;
+}
+
 .navbar-right {
     display: flex;
     justify-content: center;
@@ -92,7 +101,7 @@
 Home Page Style
 *****************************************/
 .navbar {
-    background-color: var(--dark-gray);
+    background-color: var(--gray);
     color: var(--white);
     border: none;
     padding: 1rem 4rem 1rem 4rem;
@@ -103,16 +112,17 @@ Home Page Style
     left: 0;
     right: 0;
     z-index: 500;
+    border-bottom: 2px solid var(--green);
 }
 
 .navbar-right li:first-of-type:hover {
     transition: all 400ms ease-in-out;
-    background-color: var(--gray);
+    background-color: var(--dark-gray);
 }
 
 .navbar-right li:last-of-type:hover {
     transition: all 400ms ease-in-out;
-    background-color: var(--gray);
+    background-color: var(--dark-gray);
 }
 
 .navbar-right li:hover .fa-solid{
@@ -197,7 +207,7 @@ Home Page Style
 }
 
 #logged-in-nav .navbar-right li:hover {
-    background-color: var(--gray);
+    background-color: var(--dark-gray);
     transition: all 400ms ease-in-out;
 }
 

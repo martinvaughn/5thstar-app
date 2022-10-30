@@ -11,17 +11,19 @@
     --red: #ff6961;
 }
 
-.dashboard {
+.dashboard { 
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-top: 6rem;
-    margin-bottom: 9rem;
-    /* min-width: 700px; */
+    margin-bottom: 6rem;
     max-width: 1000px;
     width: 65%;
     letter-spacing: 1px;
+    background: var(--gray);
+    padding: 2rem;
+    border-radius: 25px;
+    margin-top: 10rem;
 }
 
 .box { 
@@ -31,7 +33,7 @@
     border: 3px solid;
     padding: 1.1rem;
     border-radius: 10px;
-    height: 85px;
+    height: 90px;
     background-color: var(--dark-gray);
     box-shadow: 5px 7px var(--white);
 }
@@ -52,7 +54,6 @@
 .text h1 {
     margin-bottom: 10px;
     font-size: 32px;
-    /* text-transform: uppercase; */
     font-weight: 400;
 }
 
@@ -93,10 +94,6 @@
     margin: 1.2rem;
 }
 
-#chart-upload {
-    color: var(--dark-gray);
-}
-
 .accordion__button::after {
     content: '▲';
     float: right;
@@ -132,17 +129,31 @@
 }
 
 #chart-upload {
-    background: var(--gray);
-    border: 2px solid var(--green);
+    margin-top: 1rem;
+    width: 9rem;
+    height: 2rem;
+    background-color: var(--green);
     color: var(--white);
-    padding: 10px;
+    border: none;
     border-radius: 5px;
+    font-size: 16px;
+    font-family: "Montserrat", sans-serif;
     cursor: pointer;
-    transition: all 300ms ease-in-out;
+    transition: all 200ms ease-in-out;
+    font-weight: 500;
+}
+
+#chart-upload:disabled {
+    opacity: 0.6;
+    cursor: default;
+}
+
+#chart-upload:disabled:hover {
+    transform: none;
 }
 
 #chart-upload:hover {
-    transform: scale(1.1);
+    transform: scale(1.04);
 }
 
 .analytics-container {
@@ -233,6 +244,10 @@
     top: 9px;
     font-size: 12px;
     color: var(--green);
+}
+
+.total-ratings h1 {
+    margin: 0;
 }
 
 #loader {

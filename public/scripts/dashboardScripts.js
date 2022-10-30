@@ -10,13 +10,17 @@ document.querySelectorAll('.accordion__button').forEach(button => {
     });
 });
 
+
+const fileUploadField = document.getElementById("chart-file");
+const uploadButton = document.getElementById("chart-upload");
+
 $(function() {
-    const parseData = [];
+    let parseData = [];
     var fileName = "";
     function uploadDealcsv () {}; 
     /*------ Method for read uploded csv file ------*/
     uploadDealcsv.prototype.getCsv = function(e) {
-        let input = document.getElementById('chartFile');
+        let input = document.getElementById('chart-file');
         input.addEventListener('change', function() {
             if (this.files && this.files[0]) {
                 var myFile = this.files[0];
@@ -52,15 +56,14 @@ $(function() {
         loader.style.display = "block";
         uploadButton.style.display = "none";
         parseData.shift();
-        const customers = parseData.map(row => {
+        let customers = parseData.map(row => {
             return {
                 name: row[0],
                 email: row[1],
                 datePurchased: row[2] 
             }
         })
-
-        console.log(customers, "CUSTIGNIADNUENFUNBQEIOU")
+        console.log(customers)
         var values = {
                 customers: customers,
                 _csrf: $("#token").val()
@@ -75,16 +78,30 @@ $(function() {
                 _csrf: $("#token").val()
             },
             success: function() {
-                // console.log("SHUCKS")
                 loader.style.display = "none";
                 uploadButton.style.display = "block";
                 successMsg.style.display = "block";
+                uploadButton.disabled = true;
+                fileUploadField.value = "";
+                parseData = [];
             },
             error: function() {
                 console.log("Failed to send data - POST AJAX /DASHBOARD ");
+                //set an error notication for client
             }
         })
     });
+});
+
+//DISABLING and ENABLING upload button
+fileUploadField.addEventListener("change", () => {
+    if (fileUploadField.value) {
+        //Enable the TextBox when TextBox has value.
+        uploadButton.disabled = false;
+    } else {
+        //Disable the TextBox when TextBox is empty.
+        uploadButton.disabled = true;
+    }
 });
 
 

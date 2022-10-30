@@ -39,6 +39,14 @@
     width: 63rem;
 }
 
+.after-submit {
+    width: 50rem;
+}
+
+.after-submit h1 {
+    margin-bottom: 0;
+}
+
 h1 {
     font-size: 42px;
     line-height: 55px;
@@ -140,7 +148,7 @@ a:hover {
 
 .feedback-submit {
     margin-top: 1rem;
-    width: 10rem;
+    width: 10rem; 
     height: 2.5rem;
     background-color: var(--green);
     color: var(--white);
