@@ -53,7 +53,7 @@ const starClick = function(num) {
         star2.style.color = "#f7c02a";
         star3.style.color = "#f7c02a";
         star4.style.color = "#f7c02a";
-        star5.style.color = "#DEDEDE";
+        star5.style.color = "#DEDEDE"; 
         lastClicked = 4;
     } else if (num === 5) {
         negativeAccordion.style.display = "none";
@@ -169,6 +169,31 @@ textarea.addEventListener("keyup", () => {
         feedbackSubmit.disabled = false;
     } else {
         //Disable the TextBox when TextBox is empty.
-        feedbackSubmit.disabled = true;
+        feedbackSubmit.disabled = true; 
     }
 });
+
+const reviewPageBody = document.querySelector(".review-page-body");
+const afterSubmitBody = document.querySelector(".after-submit");
+
+feedbackSubmit.addEventListener("click", () => {
+    reviewPageBody.style.display = "none";
+    afterSubmitBody.style.display = "flex";
+    
+    $.ajax({
+        type: 'POST',
+        url: '/feedback',
+        data: {
+            feedbackText: textarea.value,
+            feedbackStars: lastClicked,
+            _csrf: $("#token").val()
+        },
+        success: function() {
+            console.log("SUCCESSy")
+        },
+        error: function() {
+            console.log("Failed to send data - POST AJAX /FEEDBACK ");
+            //set an error notication for client
+        }
+    })
+})

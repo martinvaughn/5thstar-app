@@ -19,7 +19,7 @@
 }
 
 body {
-    background-color: var(--gray);
+    background: var(--dark-gray);
     color: var(--white);
     font-family: "Montserrat", sans-serif;
     box-sizing: border-box;

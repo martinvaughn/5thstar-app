@@ -2,6 +2,7 @@
     <link rel="stylesheet" href="stylesheets/reset.css">
     <link rel="stylesheet" href="stylesheets/main.css">
     <link rel="stylesheet" href="stylesheets/review.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     
     <div class="review-page-body">
         <h1>How would you rate your experience with <%= businessName %>?</h1>
@@ -19,10 +20,11 @@
             </tr>
         </table>
         <div class="negative-accordion accordion">
-            <div class="negative-accordion__content">
+            <div class="negative-accordion__content">     
+                <input id= "token" type="hidden" name="_csrf" value="<%= csrfToken %>"/>
                 <textarea class="feedback-textarea" rows="6" cols="40" placeholder="How can we improve?"></textarea>
                 <br>
-                <button class="feedback-submit" disabled>Submit</button>
+                <button class="feedback-submit" id="feedback-submit-button" disabled>Submit</button>
             </div>
         </div>
         <div class="positive-accordion accordion">
@@ -33,7 +35,9 @@
                 <br>
             </div>
         </div>
-
+    </div>
+    <div class="review-page-body after-submit" style="display: none;">
+        <h1>Thanks for your feedback!</h1>
     </div>
     <script src="scripts/reviewScripts.js"></script>
 </div>

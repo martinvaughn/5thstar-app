@@ -20,7 +20,7 @@
 }
 
 .top-footer {
-    background-color: var(--dark-gray);
+    background-color: var(--gray);
     height: 175px;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -55,7 +55,7 @@
 }
 
 .footer-bottom {
-    background-color: var(--gray);
+    background-color: var(--dark-gray);
     height: 5rem;
     display: flex;
     justify-content: center;
@@ -63,7 +63,7 @@
 }
 
 .footer-bottom h2 {
-    background-color: var(--dark-gray);
+    background-color: var(--gray);
     color: var(--white);
     border-radius: 5px;
     font-size: 25px;
