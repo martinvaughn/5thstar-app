@@ -53,7 +53,7 @@ const starClick = function (num) {
         star2.style.color = "#f7c02a";
         star3.style.color = "#f7c02a";
         star4.style.color = "#f7c02a";
-        star5.style.color = "#DEDEDE";
+        star5.style.color = "#DEDEDE"; 
         lastClicked = 4;
     } else if (num === 5) {
         negativeAccordion.style.display = "none";
@@ -169,7 +169,7 @@ textarea.addEventListener("keyup", () => {
         feedbackSubmit.disabled = false;
     } else {
         //Disable the TextBox when TextBox is empty.
-        feedbackSubmit.disabled = true;
+        feedbackSubmit.disabled = true; 
     }
 });
 
@@ -179,6 +179,7 @@ const afterSubmitBody = document.querySelector(".after-submit");
 feedbackSubmit.addEventListener("click", () => {
     reviewPageBody.style.display = "none";
     afterSubmitBody.style.display = "flex";
+
     const urlParams = new URLSearchParams(window.location.search);
     const businessId = urlParams.get('id');
     const customerEmail = urlParams.get('email');
