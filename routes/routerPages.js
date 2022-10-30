@@ -18,24 +18,30 @@ const auth = require('../middleware/is-auth');
 //Home Router
 router.get('/', pageController.home);
 
-//Joab Board Router
-router.get('/jobboard', auth, pageController.jobBoard);
+// //Joab Board Router
+// router.get('/jobboard', auth, pageController.jobBoard);
 
-//POST Joab Board Router save
-router.post('/saved', auth, pageController.postSaved)
+// //POST Joab Board Router save
+// router.post('/saved', auth, pageController.postSaved)
 
-//GET the saved jobs
-router.get('/saved', auth, pageController.getSaved)
+// //GET the saved jobs
+// router.get('/saved', auth, pageController.getSaved)
 
-//POST removeJob
-router.post('/removejob', auth, pageController.removeJobs)
+// //POST removeJob
+// router.post('/removejob', auth, pageController.removeJobs)
 
-//GET updated the NavCount that counts job
-router.get('/updatedNavCount', auth, pageController.updatedNavCount)
+// //GET updated the NavCount that counts job
+// router.get('/updatedNavCount', auth, pageController.updatedNavCount)
+
+
+// Main Pages
 
 router.get('/dashboard', auth, pageController.getBusinessDashboard)
 
 router.get('/settings', auth, pageController.getSettings)
+
+// GET the metrics page.
+router.get('/metrics', auth, pageController.getMetrics)
 
 
 /***************************************
@@ -55,7 +61,6 @@ router.get('/feedback', auth, customerController.getCustomerFeedback)
 router.get('/review', customerController.getReviewPage)
 
 // // POST the request sent when a user sends feedback
-// router.post('/review', auth, customerController.postFeedback)
-
+router.post('/review', customerController.postReviewPage)
 
 module.exports = router;

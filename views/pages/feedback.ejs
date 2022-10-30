@@ -1,11 +1,12 @@
 <%- include('../includes/loggedHeadNav.ejs') %>
-<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.css">
-<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.js"></script>
-<link rel="stylesheet" href="stylesheets/table.css">
-</head>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.css">
+    <script type="text/javascript" charset="utf8"
+        src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.js"></script>
+    <link rel="stylesheet" href="stylesheets/table.css">
+    </head>
     <script>
         // stringify the data passed from router to ejs (within the EJS template only)
-        var parsed__data = <%- JSON.stringify(customerFeedbackRows) %>
+        var parsed__data = <% - JSON.stringify(customerFeedbackRows) %>
     </script>
     <input type="hidden" id="table-data" name="array[]" value="<%= customerFeedbackRows %>" />
     <div class="feedback-page">
@@ -18,21 +19,29 @@
                     <th>Stars</th>
                     <th>Feedback</th>
                     <th>Date</th>
-                </tr>    
+                </tr>
             </thead>
             <tbody id="feedback-table-body">
-                <% customerFeedbackRows.forEach(feedback => { %>
-                <tr>
-                    <td></td>
-                    <td><a href="mailto:someone@yoursite.com"><%= feedback.email %></a></td>
-                    <td><%= feedback.feedbackStars %></td>
-                    <td><%= feedback.feedbackText %></td>
-                    <td><%= feedback.dateResponded %></td>
-                </tr>
-                <% }); %>
-            </tbody>                  
+                <% customerFeedbackRows.forEach(feedback=> { %>
+                    <tr>
+                        <td></td>
+                        <td><a href="mailto:">
+                                <%= feedback.customerEmail %>
+                            </a></td>
+                        <td>
+                            <%= feedback.feedbackStars %>
+                        </td>
+                        <td>
+                            <%= feedback.feedbackText %>
+                        </td>
+                        <td>
+                            <%= feedback.dateResponded %>
+                        </td>
+                    </tr>
+                    <% }); %>
+            </tbody>
         </table>
     </div>
     <script src="scripts/feedbackTableScripts.js"></script>
-</div>
-<%- include('../includes/foot.ejs') %>
+    </div>
+    <%- include('../includes/foot.ejs') %>

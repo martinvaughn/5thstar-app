@@ -3,7 +3,7 @@ const bcrypt = require('bcryptjs');
 const crypto = require('crypto');
 const { validationResult } = require('express-validator/check');
 const nodemailer = require('nodemailer');
-
+const uuidv4 = require('uuidv4');
 
 //Config
 // const Config = require("../configPrivatInfo")
@@ -22,7 +22,7 @@ const transporter = nodemailer.createTransport({
 const User = require('../models/user');
 
 /*************************************************
- * GET LOGIN | SING UP
+ * GET LOGIN | SIGN UP
  * ***********************************************/
 //This controller will handle the GET Login Page
 exports.getLogin = (req, res, next) => {
@@ -33,7 +33,7 @@ exports.getLogin = (req, res, next) => {
         message = null;
     }
     res.render('auth/login', {
-        title: 'HOME OFFICE POST | Login',
+        title: '5thstar | Login',
         home: false,
         login: true,
         singUp: false,
@@ -58,7 +58,7 @@ exports.getSignUp = (req, res, next) => {
         message = null;
     }
     res.render('auth/signup', {
-        title: 'HOME OFFICE POST | Sign Up',
+        title: '5thstar | Sign Up',
         home: false,
         login: false,
         singUp: true,
@@ -81,7 +81,6 @@ exports.getSignUp = (req, res, next) => {
 //This controller will handle the POST Sign Up Page
 exports.postSignUp = (req, res, next) => {
     //User Information
-    console.log("b4 noodles")
     const email = req.body.email;
     const password = req.body.password;
     const phone = req.body.phone;
@@ -89,14 +88,14 @@ exports.postSignUp = (req, res, next) => {
     const reviewLink = req.body.reviewLink;
     const websiteLink = req.body.websiteLink;
     const businessEmailName = req.body.businessEmailName;
-    console.log("NOODLES");
+    const businessId = uuidv4();
 
     //Check for errors set in the router
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
         console.log(errors.array());
         return res.status(422).render('auth/signup', {
-            title: 'HOME OFFICE POST | Sign Up',
+            title: '5thstar | Sign Up',
             home: false,
             login: false,
             singUp: true,
@@ -123,6 +122,7 @@ exports.postSignUp = (req, res, next) => {
                 businessEmailName: businessEmailName,
                 reviewLink: reviewLink,
                 websiteLink: websiteLink,
+                businessId: businessId,
                 preferedJobs: { jobs: [] }
             });
             //save in the database
@@ -165,7 +165,7 @@ exports.postLogin = (req, res, next) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
         return res.status(422).render('auth/login', {
-            title: 'HOME OFFICE POST | Login',
+            title: '5thstar | Login',
             home: false,
             login: true,
             singUp: false,
@@ -184,7 +184,7 @@ exports.postLogin = (req, res, next) => {
             //If user is not found handle page back with error messages
             if (!user) {
                 return res.status(422).render('auth/login', {
-                    title: 'HOME OFFICE POST | Login',
+                    title: '5thstar | Login',
                     home: false,
                     login: true,
                     singUp: false,
@@ -206,12 +206,12 @@ exports.postLogin = (req, res, next) => {
                         req.session.user = user;
                         return req.session.save(err => {
                             console.log(err);
-                            res.redirect('/jobboard');
+                            res.redirect('/dashboard');
                         });
                     }
                     return res.status(422).render('auth/login', {
                         errorMessage: 'Invalid email or password.',
-                        title: 'HOME OFFICE POST | Login',
+                        title: '5thstar | Login',
                         home: false,
                         login: true,
                         singUp: false,

@@ -6,7 +6,7 @@ const star5 = document.getElementById("star-5");
 
 var lastClicked = 0;
 
-const starClick = function(num) {
+const starClick = function (num) {
     const negativeAccordion = document.querySelector(".negative-accordion");
     const positiveAccordion = document.querySelector(".positive-accordion");
     const positiveAccordionContent = document.querySelector(".positive-accordion__content");
@@ -69,7 +69,7 @@ const starClick = function(num) {
     }
 }
 
-const starHover = function(num) {
+const starHover = function (num) {
     if (num === 1) {
         star1.style.color = "#f7c02a";
         star2.style.color = "#DEDEDE";
@@ -103,7 +103,7 @@ const starHover = function(num) {
     };
 };
 
-const starOut = function() {
+const starOut = function () {
     if (lastClicked === 1) {
         star1.style.color = "#f7c02a";
         star2.style.color = "#DEDEDE";
@@ -179,20 +179,26 @@ const afterSubmitBody = document.querySelector(".after-submit");
 feedbackSubmit.addEventListener("click", () => {
     reviewPageBody.style.display = "none";
     afterSubmitBody.style.display = "flex";
-    
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const businessId = urlParams.get('id');
+    const customerEmail = urlParams.get('email');
+
     $.ajax({
         type: 'POST',
-        url: '/feedback',
+        url: '/review',
         data: {
             feedbackText: textarea.value,
             feedbackStars: lastClicked,
+            businessId: businessId,
+            customerEmail: customerEmail,
             _csrf: $("#token").val()
         },
-        success: function() {
-            console.log("SUCCESSy")
+        success: function () {
+            console.log("SUCCESS")
         },
-        error: function() {
-            console.log("Failed to send data - POST AJAX /FEEDBACK ");
+        error: function () {
+            console.log("Failed to send data - POST AJAX /REVIEW ");
             //set an error notication for client
         }
     })

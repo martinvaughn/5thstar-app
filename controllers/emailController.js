@@ -2,6 +2,7 @@ require('dotenv').config();
 const nodemailer = require("nodemailer");
 const hbs = require('nodemailer-express-handlebars');
 const path = require('path');
+const CUSTOMER_LIMIT = 1000;
 
 
 const sendEmailsToCustomersAsync = async (
@@ -55,23 +56,19 @@ const sendEmailsToCustomersAsync = async (
 
 
 exports.sendEmailsToCustomers = async (req, res, next) => {
-    console.log("customers & filename");
     try {
         const customers = req.body.customers;
         const fileName = req.body.fileName;
-
-        // const fileName = "fileName.js";
-        // const customers = [
-        //     { name: "Cole MartinDale", email: "cole.martindale13@gmail.com", datePurchased: "10/20/2022" },
-        //     { name: "MarvIn Lawn", email: "martinvaughn.io@gmail.com", datePurchased: "10/20/2022" },
-        //     { name: "Johnny Goodseed", email: "contact@bloom-mktg.com", datePurchased: "10/20/2022" },
-        // ]
         const subjectLine = "Thanks!";
         const message = "Thank you for shopping with us. Can you spare a wee little review?";
 
-
         if (customers) {
             const customerJSON = JSON.parse(customers)
+            if (customerJSON.length > CUSTOMER_LIMIT) {
+                throw new Error(`Too many customers entered at once, limit is ${CUSTOMER_LIMIT}`)
+            } else if (customerJSON.length < 1) {
+                throw new Error(`No customers added`)
+            }
             await sendEmailsToCustomersAsync(req, customerJSON, subjectLine, message).catch((error) => {
                 throw new Error(`Error sending emails async: ${error}`)
             });
