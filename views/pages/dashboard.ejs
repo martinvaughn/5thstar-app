@@ -4,14 +4,14 @@
 <link rel="stylesheet" href="stylesheets/table.css">
 
 </head>
-    <div class="dashboard">     
+    <div class="dashboard">      
         <div class="accordion">
             <button type="button" class="accordion__button"><h1>Upload Customers</h1></button>
             <div class="accordion__content">
                 <div class="upload-wrapper">
-                    <input id="chartFile" type="file" name="chartFile" accept=".csv"/>
+                    <input id="chart-file" type="file" name="chart-file" accept=".csv"/>
                     <input id= "token" type="hidden" name="_csrf" value="<%= csrfToken %>"/>
-                    <button id="chart-upload">Upload</button>
+                    <button id="chart-upload" disabled>Upload</button>
                     <p id="success-p" style="display: none;">&check; Uploaded successfully</p>
                     <div id="loader"></div>
                 </div>
@@ -31,7 +31,7 @@
                             <td><%= upload.purchases %></td>
                             <td><%= upload.fileName %></td>
                             <td><%= upload.status %></td>
-                            <td><%= upload.dateUploaded %></td>
+                            <td><%= upload.dateUploaded.toDateString() %></td>
                         </tr>
                         <% }); %>
                     </tbody>                  
@@ -46,13 +46,13 @@
             </div>
             <div class="opened box">
                 <div class="text">
-                    <h1>Opened &nbsp;<%= (analytics.opened / analytics.sent) * 100 %>%</h1>
+                    <h1>Opened &nbsp;<%= Math.floor(analytics.opened / analytics.sent * 100) %>%</h1>
                     <span>Total Opened: <%= analytics.opened %></span>
                 </div>
             </div>
             <div class="clicked box">
                 <div class="text">
-                    <h1>Clicked &nbsp;&nbsp;<%= (analytics.clicked / analytics.sent) * 100 %>%</h1>
+                    <h1>Clicked &nbsp;&nbsp;<%= Math.floor(analytics.clicked / analytics.sent * 100) %>%</h1>
                     <span>Total Clicked: <%= analytics.clicked %></span>
                 </div>
             </div>
@@ -66,13 +66,13 @@
             <div class="analytics-lower-wrapper">
                 <div class="opened box">
                     <div class="text">
-                        <h1>Opened &nbsp;<%= (analytics.opened / analytics.sent) * 100 %>%</h1>
+                        <h1>Opened &nbsp;<%= Math.floor(analytics.opened / analytics.sent * 100) %>%</h1>
                         <span>Total Opened: <%= analytics.opened %></span>
                     </div>
                 </div>
                 <div class="clicked box">
                     <div class="text">
-                        <h1>Clicked &nbsp;&nbsp;<%= (analytics.clicked / analytics.sent) * 100 %>%</h1>
+                        <h1>Clicked &nbsp;&nbsp;<%= Math.floor(analytics.clicked / analytics.sent * 100) %>%</h1>
                         <span>Total Clicked: <%= analytics.clicked %></span>
                     </div>
                 </div>
