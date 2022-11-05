@@ -13,6 +13,9 @@ const sendEmailsToCustomersAsync = async (
 ) => {
     // Create a comma separated string from toEmails
     const emails = [];
+    const reviewPage = `http://localhost:3000/review?id=${req.user.businessId}&email=${req.user.email}`;
+    const reviewLink = req.user.reviewLink;
+
     customers.forEach(customer => {
         if (customer.email.length > 1) {
             emails.push(customer.email);
@@ -47,10 +50,13 @@ const sendEmailsToCustomersAsync = async (
             subject: subjectLine,
             template: 'emailReviewersTemplate', // the name of the template file in views -> emailTemplate.handlebars
             context: {
-                message: message // replace {{message}} in the template with sender
+                message: message, // replace {{message}} in the template with sender
+                reviewPage: reviewPage,
+                reviewLink: reviewLink
             }
         });
         console.log("Message sent: %s", info.messageId);
+        console.log(reviewPage);
     }
 }
 
@@ -62,8 +68,12 @@ exports.sendEmailsToCustomers = async (req, res, next) => {
         const subjectLine = "Thanks!";
         const message = "Thank you for shopping with us. Can you spare a wee little review?";
 
+
+
+
         if (customers) {
             const customerJSON = JSON.parse(customers)
+            console.log("customerJson..", customerJSON);
             if (customerJSON.length > CUSTOMER_LIMIT) {
                 throw new Error(`Too many customers entered at once, limit is ${CUSTOMER_LIMIT}`)
             } else if (customerJSON.length < 1) {
@@ -72,10 +82,14 @@ exports.sendEmailsToCustomers = async (req, res, next) => {
             await sendEmailsToCustomersAsync(req, customerJSON, subjectLine, message).catch((error) => {
                 throw new Error(`Error sending emails async: ${error}`)
             });
+            // customerJSON.forEach(cj => {
+            //     req.user.emailQueue.push(cj);
+            // })
+
             req.user.uploads.push({ purchases: customerJSON.length, fileName: fileName, status: "Delivered" })
             req.user.save();
             res.setHeader("Content-Type", "text/html");
-            console.log("POOPDIE")
+            console.log("Sent very well sir")
             res.status(200).send("Emails Sent.");
         } else {
             throw new Error(`Email data is not complete.`);

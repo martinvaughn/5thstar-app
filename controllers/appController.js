@@ -229,8 +229,6 @@ const getMetrics = (emails) => {
 
 exports.getBusinessDashboard = async (req, res, next) => {
     // TODO c: remove data and metrics variables once they're no longer need on front end.
-    const data = await getData(req);
-    const metrics = getMetrics(data.emails)
 
     //TOP NAV UPDATE
     res.render('pages/dashboard', {
@@ -240,19 +238,6 @@ exports.getBusinessDashboard = async (req, res, next) => {
         login: false,
         singUp: false,
         businessName: req.user.businessName,
-        // TODO c: remove this once it's removed off the front end...
-        scores: {
-            negative: metrics.negative,
-            neutral: metrics.neutral,
-            positive: metrics.positive,
-            totalRatings: metrics.totalRatings
-        },
-        // TODO c: remove this once it's remove off the front end...
-        analytics: {
-            sent: metrics.sent,
-            opened: metrics.opens,
-            clicked: metrics.clicks,
-        },
         uploads: req.user.uploads || [],
         jobSavedNumber: 1
     })
