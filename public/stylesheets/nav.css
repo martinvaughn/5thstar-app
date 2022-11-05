@@ -58,6 +58,10 @@
     align-items: center;
 }
 
+.navbar-left a {
+    text-decoration: none;
+}
+
 .navbar-left h4 {
     padding: 10px;
     margin: 0;
@@ -95,6 +99,8 @@
     border-radius: 15px;
     font-size: 30px;
     font-weight: 300;
+    cursor: pointer;
+    
 }
 
 /****************************************
