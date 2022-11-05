@@ -60,6 +60,13 @@ const userSchema = new Schema({
             feedbackStars: { type: Number, required: false }
         }
     ],
+    emailQueue: [
+        {
+            name: { type: String, required: true },
+            datePurchased: { type: String, required: true },
+            email: { type: String, required: true },
+        }
+    ],
 
 
     Savedjobs: [String]
