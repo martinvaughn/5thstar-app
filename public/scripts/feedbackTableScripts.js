@@ -65,11 +65,11 @@
 $(document).ready( function () {
     $('#feedback-table').DataTable({
         "columns": [
+            {"width": "10px"},
+            {"width": "250px"},
             null,
             null,
-            null,
-            null,
-            {"width": "75px"}
+            {"width": "100px"}
         ],
         "language": {
             "emptyTable": "No Customer Feedback Yet"
