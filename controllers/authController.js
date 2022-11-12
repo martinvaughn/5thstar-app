@@ -127,6 +127,7 @@ exports.postSignUp = (req, res, next) => {
                 reviewLink: reviewLink,
                 websiteLink: websiteLink,
                 businessId: businessId,
+                emailQueue: [],
             });
             //save in the database
             return user.save();

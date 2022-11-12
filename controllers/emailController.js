@@ -2,19 +2,21 @@ require('dotenv').config();
 const nodemailer = require("nodemailer");
 const hbs = require('nodemailer-express-handlebars');
 const path = require('path');
+const User = require("../models/user");
 const CUSTOMER_LIMIT = 1000;
 
 
-const sendEmailsToCustomersAsync = async (
-    req,
+exports.sendEmailsToCustomersAsync = async (
+    user,
     customers,  // List of customer objects 
-    subjectLine, // string
-    message // string
 ) => {
+    const subjectLine = "Your feedback helps us improve!"
+    const message = "Thank you!"
+
     // Create a comma separated string from toEmails
     const emails = [];
-    const reviewPage = `http://localhost:3000/review?id=${req.user.businessId}&email=${req.user.email}`;
-    const reviewLink = req.user.reviewLink;
+    const reviewPage = `${APP_URL}/review?id=${user.businessId}&email=${user.email}`;
+    const reviewLink = user.reviewLink;
 
     customers.forEach(customer => {
         if (customer.email.length > 1) {
@@ -45,18 +47,17 @@ const sendEmailsToCustomersAsync = async (
     for (var i = 0; i < emails.length; i++) {
         // send mail with transport object
         let info = await transporter.sendMail({
-            from: `"${req.user.businessName}" <${req.user.businessEmailName}@bloom-mktg.info>`, // sender address
+            from: `"${user.businessName}" <${user.businessEmailName}@bloom-mktg.info>`, // sender address
             to: emails[i],
             subject: subjectLine,
             template: 'emailReviewersTemplate', // the name of the template file in views -> emailTemplate.handlebars
             context: {
-                message: message, // replace {{message}} in the template with sender
+                businessName: user.businessName, // replace {{message}} in the template with message
                 reviewPage: reviewPage,
                 reviewLink: reviewLink
             }
         });
         console.log("Message sent: %s", info.messageId);
-        console.log(reviewPage);
     }
 }
 
@@ -72,16 +73,26 @@ exports.sendEmailsToCustomers = async (req, res, next) => {
 
 
         if (customers) {
+            console.log("customers", customers);
             const customerJSON = JSON.parse(customers)
-            console.log("customerJson..", customerJSON);
             if (customerJSON.length > CUSTOMER_LIMIT) {
                 throw new Error(`Too many customers entered at once, limit is ${CUSTOMER_LIMIT}`)
             } else if (customerJSON.length < 1) {
                 throw new Error(`No customers added`)
             }
-            await sendEmailsToCustomersAsync(req, customerJSON, subjectLine, message).catch((error) => {
-                throw new Error(`Error sending emails async: ${error}`)
-            });
+            // await sendEmailsToCustomersAsync(req, customerJSON, subjectLine, message).catch((error) => {
+            //     throw new Error(`Error sending emails async: ${error}`)
+            // });
+
+            console.log("customerJson...", customerJSON);
+
+            const result = await User.updateOne(
+                { "_id": req.user._id }, // query matching , refId should be "ObjectId" type
+                { $push: { emailQueue: { $each: customerJSON } } } // arr will be array of objects
+            )
+
+            console.log("User now...", req.user.emailQueue, result);
+
             // customerJSON.forEach(cj => {
             //     req.user.emailQueue.push(cj);
             // })

@@ -8,6 +8,8 @@ const session = require('express-session');
 const MongoDBStore = require('connect-mongodb-session')(session);
 const csrf = require('csurf');
 const flash = require('connect-flash');
+const cron = require('node-cron');
+const emailController = require("./controllers/emailController");
 
 const User = require("./models/user");
 
@@ -32,7 +34,7 @@ const csrfProtection = csrf()
 
 //Setting up for deployin on Heroku
 const corsOptions = {
-    origin: process.env.MYURL,
+    origin: process.env.APP_URL,
     optionsSuccessStatus: 200
 };
 app.use(cors(corsOptions));
@@ -99,6 +101,25 @@ app.use(authRoutes)
     .use(mainPagesRoutes)
     .use(errorController.error500)
     .use(errorController.get404);
+
+// Email Cron Job.
+cron.schedule('*/10 * * * * *', async () => {
+    console.log('Running email task')
+    const cursor = User.find().cursor();
+    for (let user = await cursor.next(); user != null; user = await cursor.next()) {
+        const customers = user.emailQueue.slice(-2);
+        const customersArray = customers.toObject();
+        if (customersArray.length > 0) {
+            await emailController.sendEmailsToCustomersAsync(user, customersArray).catch((error) => {
+                throw new Error(`Error sending emails async: ${error}`)
+            });
+            await User.updateOne({ _id: user._id }, {
+                $pullAll: { emailQueue: customers },
+            });
+            console.log("Successfuly Removed Customers...", customersArray.length)
+        }
+    }
+});
 
 //CONNECTION
 mongoose
