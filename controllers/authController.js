@@ -123,6 +123,7 @@ exports.postSignUp = (req, res, next) => {
                 reviewLink: reviewLink,
                 websiteLink: websiteLink,
                 businessId: businessId,
+                emailQueue: [],
                 preferedJobs: { jobs: [] }
             });
             //save in the database
