@@ -23,7 +23,7 @@
                             <form class="signup-form form" id="signup-formy" action="/signup" method="POST" novalidate>
                                 <div class="header">
                                     <div class="green"></div>
-                                    <div class="yellow"></div>
+                                    <div class="yellow"></div> 
                                     <div class="blue"></div>
                                     <h1>Sign Up!</h1>
                                 </div>
@@ -31,25 +31,25 @@
                                 <p>
                                     <input type="email" name="email" id="email" class="form-control" value="<%= oldInput.email %>" required autofocus>
                                 </p>
-                                <label for="phone">Phone number</label>
+                                <label for="phone">Phone Number</label>
                                 <p>
                                     <input type="phone" name="phone" id="phone" class="form-control" value="" required autofocus>
                                 </p>
-                                <label for="business-name">Business Name</label>
+                                <label for="businessName">Business Name</label>
                                 <p>
-                                    <input type="text" id="business-name" name="business-name" class="form-control" required autofocus>
+                                    <input type="text" id="business-name" name="businessName" class="form-control" value="" required autofocus>
                                 </p>
-                                <label for="business-email-name">Alias Email</label>
+                                <label for="businessEmailName">Alias Email</label>
                                 <p>
-                                    <input type="text" id="business-email-name" name="business-email-name" class="form-control" required autofocus>
+                                    <input type="text" id="business-email-name" name="businessEmailName" class="form-control" required autofocus>
                                 </p>
                                 <label for="review-link">Review Link</label>
                                 <p>
-                                    <input type="text" id="review-link" name="review-link" class="form-control" required autofocus>
+                                    <input type="text" id="review-link" name="reviewLink" class="form-control" required autofocus>
                                 </p>
                                 <label for="website-link">Website Link</label>
                                 <p>
-                                    <input type="text" id="website-link" name="website-link" class="form-control" required autofocus>
+                                    <input type="text" id="website-link" name="websiteLink" class="form-control" required autofocus>
                                 </p>
                                 <label for="inputPassword">Password</label>
                                 <p>
@@ -67,9 +67,9 @@
                                 <% } %>
                                 <input type="hidden" name="_csrf" value="<%= csrfToken %>">
                                 <br>
-                                <p><input type="submit" value="Sign up"></p>
-                                        <!-- <button class="btn btn-lg btn-primary btn-block" type="submit">Login</button> -->
-                                        <!-- <p class="mt-5 mb-3 text-muted">&copy; 2021</p> -->
+                                <p>
+                                    <input type="submit">
+                                </p>
                             </form>
 
                             <div class="signup-protection-container" id="protection-container">
@@ -82,11 +82,11 @@
                                 <p>
                                     <input type="password" id="signup-password" class="form-control">
                                 </p>
-                                <script src="scripts/signupScripts.js"></script>
                             </div>
                         </div>
                     </div>
                 </div>
+                <script src="scripts/signupScripts.js"></script>
                 <script src="scripts/loginSignupScripts.js"></script>
             </main>
             <%- include('../includes/foot.ejs') %>

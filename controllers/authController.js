@@ -2,6 +2,7 @@ require('dotenv').config();
 const bcrypt = require('bcryptjs');
 const crypto = require('crypto');
 const { validationResult } = require('express-validator/check');
+const { uuidV4 } = require('mongodb/lib/core/utils');
 const nodemailer = require('nodemailer');
 const uuidv4 = require('uuidv4');
 
@@ -81,19 +82,22 @@ exports.getSignUp = (req, res, next) => {
 //This controller will handle the POST Sign Up Page
 exports.postSignUp = (req, res, next) => {
     //User Information
+    console.log("bananas!!!!")
     const email = req.body.email;
-    const password = req.body.password;
     const phone = req.body.phone;
     const businessName = req.body.businessName;
-    const reviewLink = req.body.reviewLink;
-    const websiteLink = req.body.websiteLink;
     const businessEmailName = req.body.businessEmailName;
-    const businessId = uuidv4();
-
+    const reviewLink = req.body.reviewLink; 
+    const websiteLink = req.body.websiteLink;
+    const password = req.body.password;
+    const businessId = uuidV4();
+    
+    
     //Check for errors set in the router
     const errors = validationResult(req);
+    console.log(errors)
     if (!errors.isEmpty()) {
-        console.log(errors.array());
+        
         return res.status(422).render('auth/signup', {
             title: '5thstar | Sign Up',
             home: false,
@@ -123,7 +127,6 @@ exports.postSignUp = (req, res, next) => {
                 reviewLink: reviewLink,
                 websiteLink: websiteLink,
                 businessId: businessId,
-                preferedJobs: { jobs: [] }
             });
             //save in the database
             return user.save();
@@ -149,6 +152,7 @@ exports.postSignUp = (req, res, next) => {
         .catch(err => {
             const error = new Error(err);
             error.httpStatusCode = 500;
+            console.log("dook", error)
             return next(error);
         });
 };
