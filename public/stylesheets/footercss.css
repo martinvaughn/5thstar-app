@@ -15,7 +15,7 @@
 #footer {
     margin-bottom: -200px;
     position: absolute;
-    /* bottom: 0; */
+    bottom: 0;
     width: 100%;
 }
 
@@ -26,19 +26,20 @@
     grid-template-columns: repeat(3, 1fr);
     font-size: 15px;
     color: #fff;
-    padding-top: 25px;
 }
 
 .top-footer h2 {
     /* font-weight: bold; */
-    text-transform: uppercase;
-    margin-left: 40%;
+    /* text-transform: uppercase; */
+    /* margin-left: 40%; */
     margin-bottom: 10px;
+    font-size: 16px;
+    font-weight: 600;
 }
 
 .top-footer li {
     list-style-type: none;
-    margin-left: 35%;
+    margin-bottom: 1px;
 }
 
 .top-footer a {
@@ -76,5 +77,18 @@
 
 .top-footer a:link {
     color: #fff;
+}
+
+.contact-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-left: 40%;
+    flex-direction: column;
+}
+
+.contact-info {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
 }
 
