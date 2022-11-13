@@ -11,9 +11,9 @@ resources:
 
 variables:
   # Container registry service connection established during pipeline creation
-  dockerRegistryServiceConnection: 'nonononooooo95273a46-54b8-472c-a59a-873fe762249a'
-  imageRepository: 'nononoooorealtrax-emailer'
-  containerRegistry: 'momommoooootwcbi.azurecr.io'
+  dockerRegistryServiceConnection: '38b06acc-a8e1-4d83-9153-dd269bbda0fb'
+  imageRepository: '5thstar'
+  containerRegistry: '5thstar.azurecr.io'
   dockerfilePath: '$(Build.SourcesDirectory)/Dockerfile'
   tag: '$(Build.BuildId)'
 
