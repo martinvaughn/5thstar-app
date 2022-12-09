@@ -36,12 +36,12 @@
                             {{BusinessName}}
                         </td>
                     </tr>
-                    <tr>
+                    {{!-- <tr>
                         <td align="center"
                             style="padding-bottom: 3.4em; font-size:x-small; font-weight:100; color: white; font-family: 'Hind', sans-serif;">
                             - Powered by 5thstar -
                         </td>
-                    </tr>
+                    </tr> --}}
 
                     <!-- <tr>
                             <td align="center" style="padding-bottom: 3em; color: white; font-size:medium">
@@ -54,7 +54,7 @@
                                 <tr>
                                     <td>
                                         <h2 class="thanks" style="margin: 20px 0 40px 0; font-size:23px; color:white;">
-                                            Thanks for your recent purchase, how would you rate your experience?
+                                            Thanks for your recent purchase from {{businessName}}, how would you rate your experience?
                                         </h2>
                                         <table border="0" align="center" cellpadding="0" cellspacing="0"
                                             style="margin:0 auto;">
@@ -93,7 +93,7 @@
                                                                                     padding: 0 2px;
                                                                                     cursor: pointer;
                                                                                 ">
-                                                                            <a href={{reviewPage}} style="color: rgb(222, 222, 222);
+                                                                            <a href={{star1}} style="color: rgb(222, 222, 222);
                                                                                 text-decoration: none;">&#9733;</a>
                                                                         </td>
                                                                         <td class="star" style="
@@ -105,7 +105,7 @@
                                                                                     padding: 0 2px;
                                                                                     cursor: pointer;
                                                                                 ">
-                                                                            <a href={{reviewPage}} style="color: rgb(222, 222, 222);
+                                                                            <a href={{star2}} style="color: rgb(222, 222, 222);
                                                                                 text-decoration: none;">&#9733;</a>
                                                                         </td>
                                                                         <td class="star" style="
@@ -117,7 +117,7 @@
                                                                                     padding: 0 2px;
                                                                                     cursor: pointer;
                                                                                 ">
-                                                                            <a href={{reviewPage}} style="color: rgb(222, 222, 222);
+                                                                            <a href={{star3}} style="color: rgb(222, 222, 222);
                                                                                 text-decoration: none;">&#9733;</a>
                                                                         </td>
                                                                         <td class="star" style="
@@ -129,7 +129,7 @@
                                                                                     padding: 0 2px;
                                                                                     cursor: pointer;
                                                                                 ">
-                                                                            <a href={{reviewLink}} style="color: rgb(222, 222, 222);
+                                                                            <a href={{star4}} style="color: rgb(222, 222, 222);
                                                                                 text-decoration: none;">&#9733;</a>
                                                                         </td>
                                                                         <td class="star" style="
@@ -141,7 +141,7 @@
                                                                                     padding: 0 2px;
                                                                                     cursor: pointer;
                                                                                 ">
-                                                                            <a href={{reviewLink}} style="color: rgb(222, 222, 222);
+                                                                            <a href={{star5}} style="color: rgb(222, 222, 222);
                                                                                 text-decoration: none;">&#9733;</a>
                                                                         </td>
                                                                     </tr>

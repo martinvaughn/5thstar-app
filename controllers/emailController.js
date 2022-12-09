@@ -15,7 +15,8 @@ exports.sendEmailsToCustomersAsync = async (
 
     // Create a comma separated string from toEmails
     const emails = [];
-    const reviewPage = `${APP_URL}/review?id=${user.businessId}&email=${user.email}`;
+
+    const reviewPage = `${process.env.APP_URL}/review?id=${user.businessId}&email=${user.email}`;
     const reviewLink = user.reviewLink;
 
     customers.forEach(customer => {
@@ -54,7 +55,12 @@ exports.sendEmailsToCustomersAsync = async (
             context: {
                 businessName: user.businessName, // replace {{message}} in the template with message
                 reviewPage: reviewPage,
-                reviewLink: reviewLink
+                reviewLink: reviewLink,
+                star1: reviewPage + "&stars=1",
+                star2: reviewPage + "&stars=2",
+                star3: reviewPage + "&stars=3",
+                star4: reviewLink + "&stars=4",
+                star5: reviewLink + "&stars=5",
             }
         });
         console.log("Message sent: %s", info.messageId);
@@ -68,9 +74,6 @@ exports.sendEmailsToCustomers = async (req, res, next) => {
         const fileName = req.body.fileName;
         const subjectLine = "Thanks!";
         const message = "Thank you for shopping with us. Can you spare a wee little review?";
-
-
-
 
         if (customers) {
             console.log("customers", customers);

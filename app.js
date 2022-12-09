@@ -103,8 +103,8 @@ app.use(authRoutes)
     .use(errorController.get404);
 
 // Email Cron Job.
-cron.schedule('*/10 * * * * *', async () => {
-    console.log('Running email task')
+cron.schedule('*/1200 * * * * *', async () => {
+    console.log('Running email task');
     const cursor = User.find().cursor();
     for (let user = await cursor.next(); user != null; user = await cursor.next()) {
         const customers = user.emailQueue.slice(-2);
