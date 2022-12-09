@@ -82,7 +82,6 @@ exports.getSignUp = (req, res, next) => {
 //This controller will handle the POST Sign Up Page
 exports.postSignUp = (req, res, next) => {
     //User Information
-    console.log("bananas!!!!")
     const email = req.body.email;
     const phone = req.body.phone;
     const businessName = req.body.businessName;

@@ -173,8 +173,8 @@ const getData = async (req) => {
     const requestBody =
     {
         "api_key": process.env.SMTP2GO_API_KEY,
-        "start_date": "2020-01-01",
-        "end_date": "2022-10-29",
+        // "start_date": "2020-01-01",
+        // "end_date": "2022-10-29",
         "limit": 5000,
         "username": "bloom-mktg.com",
         "filter_query": `sender:${senderAlias}@bloom-mktg.info`
@@ -202,13 +202,19 @@ const getMetrics = (emails) => {
         opens += email.total_opens > 0 ? 1 : 0;
         clicks += email.total_clicks > 0 ? 1 : 0;
         if (email.clicks.length > 0) {
-            if (email.clicks[0].url.includes("wonderful")) {
+            if (email.clicks[0].url.includes("stars=5")) {
                 positive += 1;
             }
-            if (email.clicks[0].url.includes("decent")) {
+            if (email.clicks[0].url.includes("stars=4")) {
+                positive += 1;
+            }
+            if (email.clicks[0].url.includes("stars=3")) {
                 neutral += 1;
             }
-            if (email.clicks[0].url.includes("poor")) {
+            if (email.clicks[0].url.includes("stars=2")) {
+                negative += 1;
+            }
+            if (email.clicks[0].url.includes("stars=1")) {
                 negative += 1;
             }
         }
@@ -246,7 +252,7 @@ exports.getBusinessDashboard = async (req, res, next) => {
 exports.getMetrics = async (req, res, next) => {
     // TODO m: change this to be non-blocking
     const data = await getData(req);
-    const metrics = getMetrics(data.emails)
+    const metrics = getMetrics(data?.emails || [])
 
     //TOP NAV UPDATE
     res.render('pages/metrics', {
@@ -278,8 +284,8 @@ exports.getSettings = async (req, res, next) => {
         login: false,
         singUp: false,
         email: req.user.email,
-        phone: req.user.phone || '4808255300', // TODO: remove the OR clauses
-        businessName: req.user.businessName || "Cole",
+        phone: req.user.phone || '', // TODO: remove the OR clauses
+        businessName: req.user.businessName || '',
         businessEmailName: req.user.businessEmailName,
         reviewLink: req.user.reviewLink,
         websiteLink: req.user.websiteLink,
