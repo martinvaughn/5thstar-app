@@ -13,6 +13,7 @@
 
 .review-page-wrapper {
     height: 100vh;
+    /* width: 10; */
     display: flex; 
     justify-content: center; 
     align-items: center; 
@@ -199,4 +200,17 @@ a:hover {
 
 .positive-accordion__content button:hover {
     transform: scale(1.05);
+}
+
+@media only screen and (max-width: 400px) {
+    .review-page-body {
+        padding: 3rem;
+        border-radius: 15px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 80%;
+        background-color: red;
+    }
 }
