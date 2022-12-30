@@ -16,26 +16,22 @@
     display: flex; 
     justify-content: center; 
     align-items: center; 
-    background-color: var(--gray);
+    background-color: #fff;
     font-family: "Montserrat", sans-serif;
-    background-image: linear-gradient(45deg, transparent 20%, black 25%, transparent 25%),
-                    linear-gradient(-45deg, transparent 20%, black 25%, transparent 25%),
-                    linear-gradient(-45deg, transparent 75%, black 80%, transparent 0),
-                    radial-gradient(gray 0px, transparent 0);
     background-size: 30px 30px, 30px 30px;
-    color: var(--white);
+    color: rgba(0, 0, 0, .87);
 }
 
 .review-page-body {
-    background-color: var(--dark-gray);
+    background-color: white;
     padding: 3rem;
     border-radius: 15px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    border: 2px solid var(--green);
-    box-shadow: 5px 10px var(--green);
+    border: 2px solid var(--dark-gray);
+    box-shadow: 5px 10px var(--dark-gray);
     width: 63rem;
 }
 
@@ -57,11 +53,6 @@ h1 {
 
 /* STARS */
 
-/*
-	Ratings Stars
-	(with as little code as possible)
-	Based on Chris Coyier's code - http://css-tricks.com/star-ratings/
-*/
 .rating {
 	unicode-bidi: bidi-override;
 	direction: rtl;
@@ -111,12 +102,10 @@ a:hover {
 
 .negative-accordion {
     display: none;
-    /* transition: all 2000ms ease-in-out; */
 }
 
 .positive-accordion {
     display: none;
-    /* transition: all 2000ms ease-in-out; */
 }
 
 .negative-accordion__content {
@@ -124,7 +113,7 @@ a:hover {
     max-height: 0;
     transition: max-height 0.3s;
     padding: 0 15px;
-    background: var(--dark-gray);
+    background: white;
     text-align: center;
 }
 
@@ -132,8 +121,8 @@ a:hover {
     resize: none;
     border: 1px solid var(--gray);
     border-radius: 5px;
-    background-color: var(--gray);
-    color: rgb(221, 222, 224);
+    background-color: white;
+    color: rgba(0, 0, 0, 0.87);
     padding: 15px;
     text-align: left;
     font-family: "Montserrat", sans-serif;
@@ -142,7 +131,7 @@ a:hover {
 }
 
 .feedback-textarea:focus {
-    border: 1px solid var(--green);
+    border: 1px solid rgb(26, 115, 232);
     outline: none;
 }
 
@@ -150,17 +139,25 @@ a:hover {
     margin-top: 1rem;
     width: 10rem; 
     height: 2.5rem;
-    background-color: var(--green);
-    color: var(--white);
+    background-color: rgb(26, 115, 232);
+    color: white;
     border: none;
     border-radius: 5px;
     font-size: 16px;
     font-family: "Montserrat", sans-serif;
     cursor: pointer;
+    transition: all 200ms ease-in-out;
+}
+.feedback-submit:hover {
+    transform: scale(1.03);
 }
 
 .feedback-submit:disabled {
-    opacity: 0.6;
+    background-color: rgba(60, 64, 67, 0.12);
+}
+
+.feedback-submit:disabled:hover {
+    transform: none;
 }
 
 .positive-accordion__content {
@@ -168,7 +165,7 @@ a:hover {
     max-height: 0;
     transition: max-height 0.3s;
     padding: 0 15px;
-    background: var(--dark-gray);
+    background: white;
     text-align: center;
 }
 
@@ -188,7 +185,7 @@ a:hover {
     margin-top: 1rem;
     width: 11rem;
     height: 3rem;
-    background-color: var(--green);
+    background-color: rgb(26, 115, 232);
     color: var(--white);
     border: none;
     border-radius: 5px;
@@ -203,6 +200,3 @@ a:hover {
 .positive-accordion__content button:hover {
     transform: scale(1.05);
 }
-
-
-
