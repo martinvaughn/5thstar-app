@@ -1,2 +1,2 @@
-# Thanks
-This is an app for giving thanks.
+# 5thstar
+Use this app to get more positive reviews for your business.
